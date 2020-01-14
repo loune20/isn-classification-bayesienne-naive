@@ -9,3 +9,7 @@ On se propose d'utiliser comme outil Git(lab), [Jupyter](https://www.dataquest.i
 Notes pour le projet via le frère de Jeanne : 
 - prendre que les notes extrêmes pour simplifer (évaluer positif/négatif)
 - réduire le dataset pour simplifier
+
+---
+
+[Amazon dataset](http://jmcauley.ucsd.edu/data/amazon/)
