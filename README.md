@@ -12,5 +12,5 @@ Notes pour le projet via le frère de Jeanne :
 
 ---
 
-[Amazon dataset](http://jmcauley.ucsd.edu/data/amazon/)
+[Amazon dataset](http://jmcauley.ucsd.edu/data/amazon/),
 [app store dataset](https://medium.com/the-research-nest/data-science-tutorial-analysis-of-the-google-play-store-dataset-c720330d4903)
