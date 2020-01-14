@@ -18,4 +18,5 @@
  - [ ] Ajouter commentaires de 2 et 4 (puis 3)
  - [ ] Jeu entre utilisateur et ia pour déterminer la note
 
-
+### D'autres améliorations et tâches à discuter : 
+ - [ ] [Pre-processing de texte](https://kavita-ganesan.com/text-preprocessing-tutorial/) (très important dans notre cas : lowercaisng + noise removal, voire normalization + stop-word removals, voire text enrichment)
