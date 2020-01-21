@@ -36,3 +36,4 @@
 - Pour un com donné, faire une liste avec uniquement les mots précédement analysés (Louise ou commun)
 - Appliquer le théorême de Bayes (commun)
 -> avoir fini à la fin des vacances de Pâques **(3 mai)**
+∩
