@@ -32,7 +32,7 @@
 - nettoyer texte (pre-processing: stop-words removal, lowercasing)
 - Rechercher mots + fréquents (en gardant ceux qui sont présents dans plus de x % des com, en calculant leur fréquence)
 - Associer à chaque mot son *"score de positivité"* : ComPos, MotInCom -> P(ComPos|MotInCos) =  P(ComPos & MotInCom)/P(MotInCom) ; sachant que  ComPos & MotInCom  =  nombre de fois où le mot est présent dans un com positif/ nombre de fois où il est est présent au total
-
+- Pour un com donné, faire une liste avec uniquement les mots précédement analysés puis appliquer le théor^éme de Bayes
 
 
 
