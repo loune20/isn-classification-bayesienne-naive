@@ -1,8 +1,3 @@
-# To-do list   
-### Pour la semaine pro
-- [X] Trouver dataset 
-- [X] Ouvrir dataset
-- [X] Trier données pour garder uniquement avis + note associée
 - [X] Faire liste de la forme : `data_original = [("bla", True), ("bla2", False)]`
 
 
@@ -23,11 +18,14 @@
 
 # Organisation
 
-## Commun : 
 
-- Ouvrir json, enlever colonnes inutiles, commencer avec 1000 lignes (500+ et 500-), convertir json en csv, extraire et transformer en liste (1 et 5 uniquement) (Louise)
-- Nettoyer texte (pre-processing: stop-words removal, lowercasing) (Mathis)
-- Rechercher mots + fréquents (en gardant ceux qui sont présents dans plus de x % des com, en calculant leur fréquence) (Jeanne)
+- Télécharger et ouvrir un fichier json contenant un dataset de commentaires Amazon anglais (commentaires et avis associés à une note allant de 1 à 5)
+Supprimer les données inutiles, c'est-à-dire la date, le nom de la personne ayant écrit le commentaire, le titre du commentaire, mais également les commentaires ayant 2, 3 ou 4 étoiles. Ainsi, on ne garde que le commentaire et la note correspondante, qui est de 1 ou de 5 pour simplifier l'analyse (le commentaire est soit positif, soit négatif).
+Commencer avec 1000 lignes (500 commentaires positifs et 500 commentaires négatifs), convertir le fichier json en csv, extraire et transformer en liste  (Louise)
+
+- Nettoyer le texte : mettre tout en minuscule, supprmier les mots de liaisons et les mots très courants qui n'ont pas d'importance dans l'analyse du texte (and, the, a, it, they etc...) (pre-processing: stop-words removal, lowercasing) (Mathis)
+
+- Rechercher des mots les plus fréquents (en gardant ceux qui sont présents dans plus de x % des com, en calculant leur fréquence) (Jeanne)
 -> **(28 janvier)**
 
 - Associer à chaque mot son *"score de positivité"* : ComPos, MotInCom -> P(ComPos|MotInCos) =  P(ComPos & MotInCom)/P(MotInCom) ; sachant que  ComPos & MotInCom  =  nombre de fois où le mot est présent dans un com positif/ nombre de fois où il est est présent au total (commun)
