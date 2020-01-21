@@ -13,23 +13,23 @@ Notre objectif est de déterminer si un commentaire, laissé sur un site de comm
 
 ## 1ère partie à finir avant le **(28 janvier)** :
 Louise :
-- Télécharger et ouvrir un fichier json contenant un dataset de commentaires Amazon en anglais (commentaires et avis associés à une note allant de 1 à 5 étoiles)
+- Télécharger et ouvrir un fichier json contenant un dataset de commentaires Amazon en anglais (commentaires et avis associés à une note allant de 1 à 5 étoiles) que l'on peut trouver sur internet.
 Supprimer les données inutiles, c'est-à-dire la date, le nom de la personne ayant écrit le commentaire, le titre du commentaire, mais également les commentaires ayant 2, 3 ou 4 étoiles. Ainsi, on ne garde que le commentaire et la note correspondante, qui est de 1 ou de 5 pour simplifier l'analyse (le commentaire est donc soit positif, soit négatif).
-Commencer avec 1000 lignes (500 commentaires positifs et 500 commentaires négatifs), convertir le fichier json en csv, extraire et transformer en liste de la forme : `data_original = [("bla", True), ("bla2", False)]`
+Commencer avec 1000 lignes (500 commentaires positifs et 500 commentaires négatifs), convertir le fichier json en csv, extraire et transformer en liste (contenant des tuple ou bien des listes, avec le commentaire et la note : True si note de 5 et False si note de 1).
 
 Mathis :
-- Nettoyer le texte : mettre tout en minuscule, supprmier les mots de liaisons et les mots très courants qui n'ont pas d'importance dans l'analyse du texte (and, the, a, it, they etc...), supprimer la ponctuation (pre-processing: stop-words removal, lowercasing)
+- Traitement des données pour nettoyer le texte (data pre-processing) : mettre tout en minuscule (lowercasing), supprmier les mots vides, c'est-à-dire les mots de liaisons et les mots très courants qui n'ont pas d'importance dans l'analyse du texte, notamment and, the, a, it, they, this etc... (stop-words removal) et supprimer la ponctuation.
 
 Jeanne :
-- Rechercher les mots les plus fréquents pour ne garder que ceux qui sont présents dans plus de 20% des commentaires (Valeur du pourcentage à ajuster), et calculer leur fréquence d'apparition dans la totalité des commentaires
+- Rechercher les mots les plus fréquents pour ne garder que ceux qui sont présents dans plus de 30% des commentaires (valeur du pourcentage à ajuster), et calculer leur fréquence d'apparition dans la totalité des commentaires. Les enregistrer dans une liste avec le mot associé à sa fréquence d'apparition.
 
 
 ## 2ème partie à finir avant le **(22 février)** :
 Commun :
-- Associer à chaque mot son *"score de positivité"*. Pour cela nous allons calculer la probabilité que le commentaire soit positif (ComPos) sachant que le mot est présent dans le commentaire (MotInCom).
-P(ComPos|MotInCom) =  P(ComPos & MotInCom)/P(MotInCom) ; sachant que  ComPos & MotInCom  =  nombre de fois où le mot est présent dans un com positif/ nombre de fois où il est est présent au total
+- Associer à chaque mot son *"score de positivité"*. Pour cela nous allons calculer la probabilité que le commentaire soit positif (ComPos) sachant que le mot est présent dans le commentaire (InCom) :
+P(ComPos|InCom) = P(ComPos & InCom)/P(InCom) ; sachant que P(ComPos & InCom) = nombre de fois où le mot est présent dans les commentaires positifs / nombre de fois où il est est présent au total dans tous les commentaires
 
-## 3ème partieà finir avant le **(3 mai)** :
+## 3ème partie à finir avant le **(3 mai)** :
 Commun :
 - Pour un commentaire donné, faire une liste avec uniquement les mots qui se trouvent dans ce commentaire et qui ont été précédement analysés (Louise ou commun)
 - Appliquer le théorême de Bayes, pour nous permettre de connaître la probabilité que ce commentaire soit positif ou négatif, selon le score de positivité des différents mots utilisés.
