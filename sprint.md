@@ -1,12 +1,11 @@
 # Objectif
 
-Notre objectif est de déterminer si un commentaire, laissé sur un site de commande en ligne (dans notre cas Amazon), est positif (5 étoiles) ou négatif (1 étoile). Pour cela nous allons calculer la probabilité qu'il soit positif, car puisque nous ne gardons que des commenatires de 1 ou 5 étoiles, il est soit positif, soit négatif. 
+Notre objectif est de déterminer si un commentaire, laissé sur un site de commande en ligne (dans notre cas Amazon), est positif (5 étoiles) ou négatif (1 étoile). Pour cela nous allons calculer la probabilité qu'il soit positif uniquement. En effet, puisque nous ne gardons que des commentaires de 1 ou 5 étoiles, nous pouvons considérer que si le probabilité que le commentaire soit positif vaut P, alors la probabilité que le commentaire soit négatif vaut 1-P. Il s'agit d'une approximation mais considérant l'objectif (déterminer si le commentaire est positif) nous devrions atteindre des résultats satisfaisants.
 
-- trier les données pour garder que la note et le commentaire (notes extrêmes uniquement)
-- Analyser la fréquence des mots selon si les commentaires sont positifs (5 étoiles) ou négatifs (1 étoile)
-- Application du théorème de Bayes pour associer chaque mot à un score de positivité
-- Calculer la probabilité avec un nouveau commentaire qu'il soit positif ou négatif selon les mots utilisés
-
+Nous avons réparti le projet en 3 étapes principales : 
+ - un ensemble de petites tâches de début de projet (tri, preprocessing du texte, tri de nouveau)
+ - création d'un algorithme associant à chaque mot un score de positivité (partie machine learning)
+ - application du théorême de Bayes pour associer à chaque commentaire la probabilité qu'il soit positif
 
 
 # Détail de l'organisation
