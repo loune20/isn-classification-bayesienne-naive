@@ -1,1 +1,10 @@
- - [ ] Ouvrir json, enlever colonnes inutiles, commencer avec 1000 lignes (500+ et 500-), convertir json en csv, extraire et transformer en liste (1 et 5 uniquement) (Louise)
+# Notes
+
+## A la main
+- [ ] Dépouiller set original
+- [ ] Convertir en CSV
+- [ ] Garder 500 lignes positives et 500 négatives
+
+## En Python
+ - [ ] Extraire et transformer en liste
+ - [ ] Données de type `data_original = [("com", True),("com2", False)]`
