@@ -3,7 +3,7 @@
 - [ ] Trouver dataset 
 - [ ] Ouvrir dataset
 - [ ] Trier données pour garder uniquement avis + note associée
-- [ ] Faire dict de la forme : `data = [("bla", True), ("bla2", False)]`
+- [ ] Faire liste de la forme : `data = [("bla", True), ("bla2", False)]`
 
 
 ### Objectifs
