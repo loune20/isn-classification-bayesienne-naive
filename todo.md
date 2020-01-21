@@ -28,11 +28,11 @@
 - Ouvrir json, enlever colonnes inutiles, commencer avec 1000 lignes (500+ et 500-), convertir json en csv, extraire et transformer en liste (1 et 5 uniquement) (Louise)
 - Nettoyer texte (pre-processing: stop-words removal, lowercasing) (Mathis)
 - Rechercher mots + fréquents (en gardant ceux qui sont présents dans plus de x % des com, en calculant leur fréquence) (Jeanne)
--> (28 janvier)
+-> **(28 janvier)**
 
 - Associer à chaque mot son *"score de positivité"* : ComPos, MotInCom -> P(ComPos|MotInCos) =  P(ComPos & MotInCom)/P(MotInCom) ; sachant que  ComPos & MotInCom  =  nombre de fois où le mot est présent dans un com positif/ nombre de fois où il est est présent au total (commun)
--> (22 février)
+-> **(22 février)**
 
 - Pour un com donné, faire une liste avec uniquement les mots précédement analysés (Louise ou commun)
 - Appliquer le théorême de Bayes (commun)
--> avoir fini à la fin des vacances de Pâques (3 mai)
+-> avoir fini à la fin des vacances de Pâques **(3 mai)**
