@@ -16,14 +16,26 @@
  - [ ] Calcul de la fréquence d'erreurs
  - [ ] Interface graphique
  - [ ] Ajouter commentaires de 2 et 4 (puis 3)
- - [ ] Jeu entre utilisateur et ia pour déterminer la note
+ - [ ] Jeu entre utilisateur et algo pour déterminer la note
 
 ### D'autres améliorations et tâches à discuter : 
  - [ ] [Pre-processing de texte](https://kavita-ganesan.com/text-preprocessing-tutorial/) (très important dans notre cas : lowercaisng + noise removal, voire normalization + stop-word removals, voire text enrichment)
 
 
+
+
 # Organisation
 
+
 ## Commun : 
-- Ouvrir json, enlever colonnes inutiles, commencer avec 1000 lignes, convertir json en csv, extraire et transformer en liste (1 et 5 uniquement)
-- rechercher mots + fréquents, on garde ceux qui sont présents dans plus de x % des com
+- Ouvrir json, enlever colonnes inutiles, commencer avec 1000 lignes (500+ et 500-), convertir json en csv, extraire et transformer en liste (1 et 5 uniquement)
+- nettoyer texte (pre-processing: stop-words removal, lowercasing)
+- Rechercher mots + fréquents (en gardant ceux qui sont présents dans plus de x % des com, en calculant leur fréquence)
+- Associer à chaque mot son *"score de positivité"* : ComPos, MotInCom -> P(ComPos|MotInCos) =  P(ComPos & MotInCom)/P(MotInCom) ; sachant que  ComPos & MotInCom  =  nombre de fois où le mot est présent dans un com positif/ nombre de fois où il est est présent au total
+
+
+
+
+## Parties indépendantes
+- pre-processing joli (nettoyage en profondeur)
+- 
