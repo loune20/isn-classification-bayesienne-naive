@@ -4,4 +4,4 @@
  - [Amazon books](https://cseweb.ucsd.edu/~jmcauley/datasets.html#amazon_reviews)
  - [Library Things](https://cseweb.ucsd.edu/~jmcauley/datasets.html#social_data)
 
-Fichier python : ouvre fichier csv (data2.csv, transformé de data2.json, extrait de data.json)
+Fichier python : ouvre fichier csv (data2.csv, transformé de data2.json, extrait des 1000 premières lignes du fichier json)
