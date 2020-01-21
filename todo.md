@@ -1,9 +1,9 @@
 # To-do list   
 ### Pour la semaine pro
-- [ ] Trouver dataset 
-- [ ] Ouvrir dataset
-- [ ] Trier données pour garder uniquement avis + note associée
-- [ ] Faire liste de la forme : `data = [("bla", True), ("bla2", False)]`
+- [X] Trouver dataset 
+- [X] Ouvrir dataset
+- [X] Trier données pour garder uniquement avis + note associée
+- [X] Faire liste de la forme : `data = [("bla", True), ("bla2", False)]`
 
 
 ### Objectifs
@@ -20,3 +20,7 @@
 
 ### D'autres améliorations et tâches à discuter : 
  - [ ] [Pre-processing de texte](https://kavita-ganesan.com/text-preprocessing-tutorial/) (très important dans notre cas : lowercaisng + noise removal, voire normalization + stop-word removals, voire text enrichment)
+
+
+# Organisation
+
