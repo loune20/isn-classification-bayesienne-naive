@@ -24,3 +24,6 @@
 
 # Organisation
 
+## Commun : 
+- Ouvrir json, enlever colonnes inutiles, commencer avec 1000 lignes, convertir json en csv, extraire et transformer en liste (1 et 5 uniquement)
+- rechercher mots + fréquents, on garde ceux qui sont présents dans plus de x % des com
