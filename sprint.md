@@ -33,8 +33,9 @@ Les entrées et sorties de chaques fonctions/programmes sont établies comme sui
 
 ## 2ème partie : score de positivté (*22 février*)
 Commun :
-- Associer à chaque mot son *"score de positivité"*. Pour cela nous allons calculer la probabilité que le commentaire soit positif (ComPos) sachant que le mot est présent dans le commentaire (InCom) :
-P(ComPos|InCom) = P(ComPos & InCom)/P(InCom) ; sachant que P(ComPos & InCom) = nombre de fois où le mot est présent dans les commentaires positifs / nombre de fois où il est est présent au total dans tous les commentaires **formater**
+Associer à chaque mot son "score de positivité"*. Pour cela nous allons calculer la probabilité que le commentaire soit positif (ComPos) sachant que le mot est présent dans le commentaire (InCom) :
+P(ComPos|InCom) = P(ComPos & InCom)/P(InCom)
+Sachant que P(ComPos & InCom) = nombre de fois où le mot est présent dans les commentaires positifs / nombre de fois où il est est présent au total dans tous les commentaires **formater** et **ajouter format donné attendu**
 
 ## 3ème partie: Bayes (*3 mai*)
 Commun :
@@ -47,4 +48,4 @@ Si on termine avant la date limite que l'on s'est imposé, on a plusieurs améli
 - Calculer la fréquence d'erreurs
 - Créer une interface graphique qui afficherait le commentaire, la note devinée par l'algorithme, puis la note réelle, avec un bouton permettant d'afficher un nouveau commentaire, ou evntuellement de rentrer notre propre commentaire (en anglais) et de voir s'il estime que c'est un commentaire positif ou negatif.
 - Faire un jeu entre l'utilisateur et l'algorithme pour déterminer la note : le commentaire s'affiche et il faut deviner s'il est positif (note de 5 étoiles) ou négatif (note de 1 étoile)
-- Améliorer le pre-processing du texte, pour par exemple reconnaître les abréviations qui sont fréquentes et qui pour l'instant ne sont pas reconnues. Cela permettrait de rendre l'analyse du texte plus précise (lowercasing + noise removal, voire normalization + stop-word removals, voire text enrichment)
+- Améliorer le pre-processing du texte, pour par exemple reconnaître les abréviations qui sont fréquentes et qui pour l'instant ne sont pas reconnues. Cela permettrait de rendre l'analyse du texte plus précise (normalization, voire text enrichment)
