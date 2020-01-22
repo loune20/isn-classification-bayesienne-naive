@@ -1,3 +1,5 @@
+[version exportable joliment ici](https://hackmd.io/@loune/sprint1/edit)
+
 # Objectif
 
 Notre objectif est de déterminer si un commentaire, laissé sur un site de commande en ligne (dans notre cas Amazon), est positif (5 étoiles) ou négatif (1 étoile). Pour cela nous allons calculer la probabilité qu'il soit positif uniquement. En effet, puisque nous ne gardons que des commentaires de 1 ou 5 étoiles, nous pouvons considérer que si le probabilité que le commentaire soit positif vaut P, alors la probabilité que le commentaire soit négatif vaut 1-P. Il s'agit d'une approximation mais considérant l'objectif (déterminer si le commentaire est positif) nous devrions atteindre des résultats satisfaisants.
