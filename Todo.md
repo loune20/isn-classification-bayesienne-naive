@@ -15,24 +15,25 @@
 
 
 ## Mathis
-- [ ] Lowercasing
-- [ ] Stop-words removal
+- [X] Lowercasing
+- [X] Stop-words removal
 - [ ] Supprimer la ponctuation (simple anomalies noise removal)
+- [ ] Récupérer format de base
 
 ### Format
 - entrée : `data_original`
-- sortie : `data_original`
+- sortie : `data_treated`
 - forme : plusieurs fonctions
 
 
 ## Jeanne
 
 - [ ] Rechercher mots + fréquents dans les com et garder ceux présents dans + de 30% des com (ajuster)
-- [ ] Calculer leur fréquence d’apparition dans la totalité des commentaires.
+- [X] Calculer leur fréquence d’apparition dans la totalité des commentaires.
 
 ### Format
-- entrée : `data_original`
-- sortie : dictionnaire `freq_words = {"word1": freq_word1, "word2":freq_word2}`
+- entrée : `data_treated`
+- sortie : dictionnaire frequency_of_words = `{"word1":freq_word1, "word2":freq_word2}`
 - format : plusieurs fonctions
 
 ---
