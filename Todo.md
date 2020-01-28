@@ -5,8 +5,8 @@
 ## Louise
 - [ ] Télécharger et ouvrir un fichier json contenant un dataset de commentaires Amazon en anglais (commentaires et avis associés à une note allant de 1 à 5 étoiles) que l’on peut trouver sur internet et le convertir en un fichier csv.
 - [ ] Supprimer les données inutiles, c’est-à-dire la date, le nom de la personne, le titre, mais également les commentaires ayant 2, 3 ou 4 étoiles. Ainsi, on ne garde que le commentaire et la note correspondante, qui est de 1 ou de 5 pour simplifier l’analyse (le commentaire est donc soit positif, soit négatif). Commencer avec 1000 lignes (500 commentaires positifs et 500 commentaires négatifs)
-- [ ] Extraire les données et les transformer en liste
-- [ ] Remplacer les 1 et 5 par False et True
+- [X] Extraire les données et les transformer en liste
+- [X] Remplacer les 1 et 5 par False et True
 
 ### Format :
 - entrée : fichier CSV pré-traité manuellement
@@ -18,7 +18,7 @@
 - [X] Lowercasing
 - [X] Stop-words removal
 - [ ] Supprimer la ponctuation (simple anomalies noise removal)
-- [ ] Récupérer format de base
+- [X] Récupérer format de base
 
 ### Format :
 - entrée : `data_original`
@@ -54,11 +54,11 @@
 
 ### Format
 - entrée : dictionnaire `freq_word` et dictionnaire `freq_word_in_pos`
-- sortie : XXX
+- sortie : dictionnaire `pos_and_contains_word = {"word1": pos_and_contains_word1, "word2": pos_and_contains_word2}`
 
 ## Jeanne :  probabilité que le commentaire soit positif sachant qu’il contient le mot
-- [ ] Calculer la probabilité que le mot soit présent dans le commentaire (word[i]) sachant que le commentaire est positif (ComPos), afin d’obtenir le score de positivité de chaque mot: pos_score[i] = entreedetoutalheure / prob_pos
+- [ ] Calculer la probabilité que le mot soit présent dans le commentaire (word[i]) sachant que le commentaire est positif (ComPos), afin d’obtenir le score de positivité de chaque mot: pos_score[i] = pos_and_contains_word / prob_pos
 
 ### Format
-- entrée : 
+- entrée : dictionnaire `pos_and_contains_word`
 - sortie : dictionnaire de type pos_score = {"word1":pos_score1, "word2":pos_score2} où pos_score1 désigne le score de positivité de word1 (float compris entre 0 et 1)
