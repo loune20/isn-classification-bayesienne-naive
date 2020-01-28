@@ -21,7 +21,7 @@ def preProcessing(data_original):
             del(my_list[i][index[l]])
         index = []
         my_list[i]=" ".join(my_list[i])
-        data_treated[i] = [(my_list[i],data_original[i][1] )]
+        data_treated[i] = [my_list[i],data_original[i][1]]
     return(data_treated)
 
 
