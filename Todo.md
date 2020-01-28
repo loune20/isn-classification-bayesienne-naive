@@ -28,11 +28,11 @@
 ## Jeanne
 
 - [ ] Rechercher mots + fréquents dans les com et garder ceux présents dans + de 30% des com (ajuster)
-- [ ] Calculer leur fréquence d’apparition dans la totalité des commentaires.
+- [X] Calculer leur fréquence d’apparition dans la totalité des commentaires.
 
 ### Format
 - entrée : `data_original`
-- sortie : liste freq_words = `[("word1", freq_word1), ("word2", freq_word2)]`
+- sortie : dictionnaire frequency_of_words = `{"word1":freq_word1, "word2":freq_word2}`
 - format : plusieurs fonctions
 
 ---
