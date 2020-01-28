@@ -42,7 +42,7 @@ def frequency_of_words (data_set) :
         freq_word[word] = word_counter[word]/number_of_com #frequency of comments containing the word
         
         if freq_word[word] <= 0.3 :
-            del freq_word[word] #delete words with a frequncy < 0.3    
+            del freq_word[word] #delete words with a frequency <= 0.3    
 
     return (freq_word)
 
