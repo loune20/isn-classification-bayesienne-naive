@@ -17,7 +17,7 @@ for row in reader:
 data_treated = [("first com",True), ("com com bla",False), ("bla com2",True), ("com test",True)]
 
 global number_of_com
-number_of_com = len(data_set)
+number_of_com = len(data_treated)
 
 def frequency_of_words (data_set) :
 
@@ -40,7 +40,10 @@ def frequency_of_words (data_set) :
             if word in comments_list[i] : #count number of comments containing the word
                 word_counter[word] += 1
         freq_word[word] = word_counter[word]/number_of_com #frequency of comments containing the word
-    
+        
+        if freq_word[word] <= 0.3 :
+            del freq_word[word] #delete words with a frequncy < 0.3    
+
     return (freq_word)
 
 print (frequency_of_words(data_treated))
