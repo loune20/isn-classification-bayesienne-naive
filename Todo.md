@@ -2,6 +2,7 @@
 - [ ] Renommer fonction Jeanne
 - [ ] Voir ensemble convention de nommage
 - [ ] Merge `freq_word` and `freq_word_in_pos` at some point ?
+- [ ] Détailler la partie application de Bayes (ou pas ?)
 
 # Tri divers (31 janvier)
 
@@ -65,3 +66,11 @@
 ### Format
 - entrée : dictionnaire `pos_and_contains_word`
 - sortie : dictionnaire de type pos_score = {"word1":pos_score1, "word2":pos_score2} où pos_score1 désigne le score de positivité de word1 (float compris entre 0 et 1)
+
+
+# Bayes (3 mai)
+
+- [ ] Pour un com, faire une liste contentant tous les mots précédemment analysés
+- [ ] Récuperer dans `pos_score` le score de chacun des mots
+- [ ] Appliquer Bayes
+- [ ] Print le résultat de l'analyse
