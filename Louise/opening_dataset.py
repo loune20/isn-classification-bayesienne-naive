@@ -10,9 +10,9 @@ print(list_data) #print our final result
 
 for i in range len(list_data):
     if list_data[1] == 1:
-        list_data[1] == False
+        list_data[1] = False
     elif list_data[1] == 5:
-        list_data[1] == True
+        list_data[1] = True
     else:
         print("Error : one of the comment has an overall that's neither 1 or 5")
 
