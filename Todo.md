@@ -1,6 +1,7 @@
 # To-do
 - [ ] Renommer fonction Jeanne
 - [ ] Voir ensemble convention de nommage
+- [ ] Merge `freq_word` and `freq_word_in_pos` at some point ?
 
 # Tri divers (31 janvier)
 
@@ -43,7 +44,7 @@
 # Score de positivité (22 février)
 
 ## Mathis : fréquence d'appparition du mot dans les commentaires positifs
-- [ ] Calculer fréquence apparition de ces mots dans les com positifs
+- [ ] Calculer fréquence apparition des mots de la liste `freq_word` dans les com positifs
 - [ ] Associer chaque mot à cette fréquence
 - [ ] Si elle est comprise entre 0.45 et 0.55 (ajuster) on supprime le mot de la liste
 
