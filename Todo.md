@@ -18,7 +18,7 @@
 - [X] Lowercasing
 - [X] Stop-words removal
 - [ ] Supprimer la ponctuation (simple anomalies noise removal)
-- [ ] Récupérer format de base
+- [X] Récupérer format de base
 
 ### Format :
 - entrée : `data_original`
