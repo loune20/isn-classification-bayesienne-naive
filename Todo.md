@@ -2,13 +2,13 @@
 
 # Tri divers (31 janvier)
 
-## Louise :
+## Louise
 - [ ] Télécharger et ouvrir un fichier json contenant un dataset de commentaires Amazon en anglais (commentaires et avis associés à une note allant de 1 à 5 étoiles) que l’on peut trouver sur internet et le convertir en un fichier csv.
 - [ ] Supprimer les données inutiles, c’est-à-dire la date, le nom de la personne, le titre, mais également les commentaires ayant 2, 3 ou 4 étoiles. Ainsi, on ne garde que le commentaire et la note correspondante, qui est de 1 ou de 5 pour simplifier l’analyse (le commentaire est donc soit positif, soit négatif). Commencer avec 1000 lignes (500 commentaires positifs et 500 commentaires négatifs)
 - [ ] Extraire les données et les transformer en liste
-- [ ] Remplacer les 1 et 5 et False et True
+- [ ] Remplacer les 1 et 5 par False et True
 
-### Format
+### Format :
 - entrée : fichier CSV pré-traité manuellement
 - sortie: liste `data_original = [("comm1", True), ("comm2", False), ("comm3", False)]`
 - format : simple code
@@ -20,7 +20,7 @@
 - [ ] Supprimer la ponctuation (simple anomalies noise removal)
 - [ ] Récupérer format de base
 
-### Format
+### Format :
 - entrée : `data_original`
 - sortie : `data_treated`
 - forme : plusieurs fonctions
@@ -28,13 +28,13 @@
 
 ## Jeanne
 
-- [ ] Rechercher mots + fréquents dans les com et garder ceux présents dans + de 30% des com (ajuster)
+- [X] Supprimer mots présents dans moins de 30% des com (à ajuster)
 - [X] Calculer leur fréquence d’apparition dans la totalité des commentaires.
 
-### Format
+### Format :
 - entrée : `data_treated`
 - sortie : dictionnaire frequency_of_words = `{"word1":freq_word1, "word2":freq_word2}`
-- format : plusieurs fonctions
+- format : fonction `frequency_of_words`
 
 ---
 
@@ -61,7 +61,4 @@
 
 ### Format
 - entrée : 
-
-Format :
-
-sortie : dictionnaire de type pos_score = {"word1":pos_score1, "word2":pos_score2} où pos_score1 désigne le score de positivité de word1 (float compris entre 0 et 1)
+- sortie : dictionnaire de type pos_score = {"word1":pos_score1, "word2":pos_score2} où pos_score1 désigne le score de positivité de word1 (float compris entre 0 et 1)
