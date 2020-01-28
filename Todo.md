@@ -57,11 +57,11 @@
 
 ### Format
 - entrée : dictionnaire `freq_word` et dictionnaire `freq_word_in_pos`
-- sortie : XXX
+- sortie : dictionnaire `pos_and_contains_word = {"word1": pos_and_contains_word1, "word2": pos_and_contains_word2}`
 
 ## Jeanne :  probabilité que le commentaire soit positif sachant qu’il contient le mot
-- [ ] Calculer la probabilité que le mot soit présent dans le commentaire (word[i]) sachant que le commentaire est positif (ComPos), afin d’obtenir le score de positivité de chaque mot: pos_score[i] = entreedetoutalheure / prob_pos
+- [ ] Calculer la probabilité que le mot soit présent dans le commentaire (word[i]) sachant que le commentaire est positif (ComPos), afin d’obtenir le score de positivité de chaque mot: pos_score[i] = pos_and_contains_word / prob_pos
 
 ### Format
-- entrée : 
+- entrée : dictionnaire `pos_and_contains_word`
 - sortie : dictionnaire de type pos_score = {"word1":pos_score1, "word2":pos_score2} où pos_score1 désigne le score de positivité de word1 (float compris entre 0 et 1)
