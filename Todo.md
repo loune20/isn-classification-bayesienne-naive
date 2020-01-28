@@ -22,7 +22,7 @@
 
 ### Format
 - entrée : `data_original`
-- sortie : `data_original`
+- sortie : `data_treated`
 - forme : plusieurs fonctions
 
 
@@ -32,7 +32,7 @@
 - [X] Calculer leur fréquence d’apparition dans la totalité des commentaires.
 
 ### Format
-- entrée : `data_original`
+- entrée : `data_treated`
 - sortie : dictionnaire frequency_of_words = `{"word1":freq_word1, "word2":freq_word2}`
 - format : plusieurs fonctions
 
