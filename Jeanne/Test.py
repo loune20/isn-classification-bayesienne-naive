@@ -46,3 +46,17 @@ def frequencyOfWords (data_set) :
     return (freq_word)
 
 print (frequencyOfWords(data_treated))
+
+
+
+#____________________________________________________________________________________________
+# EN COURS 
+pos_score = {}
+prob_pos = 0
+
+for i in range (number_of_com) :
+    if data_treated[i][1] == True :
+        prob_pos += 1
+
+for word in number_of_words :
+    pos_score[word] = pos_and_contains_word[word] / prob_pos
