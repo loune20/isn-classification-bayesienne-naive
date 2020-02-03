@@ -1,5 +1,5 @@
 # To-do
-- [ ] Renommer fonction Jeanne
+- [X] Renommer fonction Jeanne
 - [ ] Voir ensemble convention de nommage
 - [ ] Merge `freq_word` and `freq_word_in_pos` at some point ?
 - [ ] Détailler la partie application de Bayes (ou pas ?)
