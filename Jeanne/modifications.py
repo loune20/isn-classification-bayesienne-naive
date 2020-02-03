@@ -1,4 +1,5 @@
 # Partie de Mathis :
+# changer nom de my_list
 
 def preProcessing(data_original):    
     my_list = []
