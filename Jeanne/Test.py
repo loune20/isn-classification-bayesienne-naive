@@ -16,10 +16,9 @@ for row in reader:
 
 data_treated = [("first com",True), ("com com bla",False), ("bla com2",True), ("com test",True)]
 
-global number_of_com
-number_of_com = len(data_treated)
+number_of_com = len(data_treated) #creation of number_of_com as a global variable
 
-def frequency_of_words (data_set) :
+def frequencyOfWords (data_set) :
 
     words_list = []
     comments_list = []
@@ -46,4 +45,4 @@ def frequency_of_words (data_set) :
 
     return (freq_word)
 
-print (frequency_of_words(data_treated))
+print (frequencyOfWords(data_treated))
