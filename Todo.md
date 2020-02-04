@@ -26,7 +26,7 @@
 
 # Bayes (3 mai)
 
-- [ ] Pour un com, faire une liste contentant tous les mots précédemment analysés
+- [ ] Pour un com, faire une liste contentant tous les mots précédemment analysés (récupérer celle de Jeanne)
 - [ ] Récuperer dans `pos_score` le score de chacun des mots
 - [ ] Appliquer Bayes avec la formule : `P(comPos |word1, word2, word3...) = (pos_score[word1]*pos_score[word2]*pos_score[3])/(freq_word[word1]*freq_word[word2]*freq_word[word3])`
 - [ ] Print le résultat de l'analyse
