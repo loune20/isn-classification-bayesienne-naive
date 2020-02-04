@@ -76,3 +76,4 @@ def frequencyOfWords (data_set) :
 data_original = [("ourselves are here in between the monkey is great", True), ("once upon a time the wizard was very happy it is a good news", False), ("blabla is a very good friend", True)]
 data_treated = preProcessing(data_original)
 freq_words = frequencyOfWords(data_treated)
+
