@@ -62,11 +62,11 @@
 - sortie : dictionnaire `pos_and_contains_word = {"word1": pos_and_contains_word1, "word2": pos_and_contains_word2}`
 
 ## Jeanne :  probabilité que le commentaire contienne le mot sachant qu’il est positif 
-- [ ] Calculer la probabilité que le mot soit présent dans le commentaire (word[i]) sachant que le commentaire est positif (ComPos), afin d’obtenir le score de positivité de chaque mot: pos_score[i] = pos_and_contains_word / prob_pos
+- [ ] Calculer la probabilité que le mot soit présent dans le commentaire (word[i]) sachant que le commentaire est positif (ComPos), afin d’obtenir le score de positivité de chaque mot: `pos_score[i] = pos_and_contains_word / prob_pos`
 
 ### Format
 - entrée : dictionnaire `pos_and_contains_word`
-- sortie : dictionnaire de type pos_score = {"word1":pos_score1, "word2":pos_score2} où pos_score1 désigne le score de positivité de word1 (float compris entre 0 et 1)
+- sortie : dictionnaire de type `pos_score = {"word1":pos_score1, "word2":pos_score2}` où `pos_score1` désigne le score de positivité de word1 (float compris entre 0 et 1)
 
 
 # Bayes (3 mai)
