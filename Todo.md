@@ -7,7 +7,7 @@
 # Tri divers (31 janvier)
 
 ## Louise
-- [ ] Télécharger et ouvrir un fichier json contenant un dataset de commentaires Amazon en anglais (commentaires et avis associés à une note allant de 1 à 5 étoiles) que l’on peut trouver sur internet et le convertir en un fichier csv.
+- [X] Télécharger et ouvrir un fichier json contenant un dataset de commentaires Amazon en anglais (commentaires et avis associés à une note allant de 1 à 5 étoiles) que l’on peut trouver sur internet et le convertir en un fichier csv.
 - [ ] Supprimer les données inutiles, c’est-à-dire la date, le nom de la personne, le titre, mais également les commentaires ayant 2, 3 ou 4 étoiles. Ainsi, on ne garde que le commentaire et la note correspondante, qui est de 1 ou de 5 pour simplifier l’analyse (le commentaire est donc soit positif, soit négatif). Commencer avec 1000 lignes (500 commentaires positifs et 500 commentaires négatifs)
 - [X] Extraire les données et les transformer en liste
 - [X] Remplacer les 1 et 5 par False et True
@@ -21,7 +21,7 @@
 ## Mathis
 - [X] Lowercasing
 - [X] Stop-words removal
-- [ ] Supprimer la ponctuation (simple anomalies noise removal)
+- [X] Supprimer la ponctuation (simple anomalies noise removal)
 - [X] Récupérer format de base
 
 ### Format :
