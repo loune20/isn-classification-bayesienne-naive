@@ -1,21 +1,19 @@
 import csv #importing csv python library
       
-reader = csv.DictReader(open('data2.csv')) #opening file
+reader = csv.DictReader(open('datacool.csv')) #opening file
         
-list_data = [] #creating empty list
+data_original = [] #creating empty list
 for row in reader: #for each row in our csv file
-    list_data.append((row['review'], row['overall'])) #adding at the end of the list a tuple of the summary and the rating extracted from the csv file
+    data_original.append([row['reviewText'], row['overall']]) #adding at the end of the list a tuple of the summary and the rating extracted from the csv file
     
-print(list_data) #print our final result
 
-for i in range len(list_data):
-    if list_data[1] == 1:
-        list_data[1] = False
-    elif list_data[1] == 5:
-        list_data[1] = True
+for i in range(len(data_original)):
+    if data_original[i][1] == "1":
+        data_original[i][1] = False
+    elif data_original[i][1] == "5":
+        data_original[i][1] = True
     else:
         print("Error : one of the comment has an overall that's neither 1 or 5")
-
 
 #VERIFIER ENCHAINEMENT AVEC UN DATASET
 
@@ -68,12 +66,12 @@ def frequencyOfWords (data_set) :
                 word_counter[word] += 1
         freq_word[word] = word_counter[word]/len(data_treated) #frequency of comments containing the word
         
-        if freq_word[word] <= 0.3 :
+        if freq_word[word] <= 0.1 :
             del freq_word[word] #delete words with a frequency <= 0.3    
 
     return (freq_word)
 
-data_original = [("ourselves are here in between the monkey is great", True), ("once upon a time the wizard was very happy it is a good news", False), ("blabla is a very good friend", True)]
 data_treated = preProcessing(data_original)
 freq_words = frequencyOfWords(data_treated)
+print(freq_words)
 
