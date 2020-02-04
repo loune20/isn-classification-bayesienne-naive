@@ -54,7 +54,7 @@ def frequencyOfWords (data_set) :
     number_of_words = {}
     word_counter = {}
     
-    for i in range (number_of_com) :
+    for i in range (len(data_treated)) :
         comments_list.append(data_set[i][0].split()) #list of lists with words (separated by a space) of each comment
         words_list = words_list + data_set[i][0].split() #list of all words in all comments separated by a space
     
@@ -63,10 +63,10 @@ def frequencyOfWords (data_set) :
     
     for word in number_of_words :
         word_counter[word] = 0
-        for i in range (number_of_com) :
+        for i in range (len(data_treated)) :
             if word in comments_list[i] : #count number of comments containing the word
                 word_counter[word] += 1
-        freq_word[word] = word_counter[word]/number_of_com #frequency of comments containing the word
+        freq_word[word] = word_counter[word]/len(data_treated) #frequency of comments containing the word
         
         if freq_word[word] <= 0.3 :
             del freq_word[word] #delete words with a frequency <= 0.3    
@@ -75,5 +75,4 @@ def frequencyOfWords (data_set) :
 
 data_original = [("ourselves are here in between the monkey is great", True), ("once upon a time the wizard was very happy it is a good news", False), ("blabla is a very good friend", True)]
 data_treated = preProcessing(data_original)
-number_of_com = len(data_treated) #creation of number_of_com as a global variable
 freq_words = frequencyOfWords(data_treated)
