@@ -77,6 +77,6 @@ for word in words_list :
 
 #besoin de creer une liste avec tous les mots (ici number_of_words)
 for word in number_of_words :
-    pos_score[word] = freq_word_in_pos[word] / prob_pos #probability that the comment contains the word knowing it is positive
+    pos_score[word] = freq_word_in_pos[word] / prob_pos #probability that the comment contains the word knowing it is positive = word positivity score
  
 print(pos_score)
