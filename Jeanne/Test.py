@@ -12,7 +12,7 @@ for row in reader:
 
 
 #____________________________________________________________________________________________
-# compter mots et frequence :
+# compter mots et frequence : (ancienne version)
 
 data_treated = [("first com",True), ("com com bla",False), ("bla com2",True), ("com test",True)]
 
@@ -50,13 +50,33 @@ print (frequencyOfWords(data_treated))
 
 
 #____________________________________________________________________________________________
-# EN COURS 
+# Probabilité que le commentaire contienne le mot sachant qu’il est positif :
+
+data_treated = [['word1',False], ['word2', True], ['word2', True], ['word3', True]]
+freq_word_in_pos = {"word1": 0, "word2": 2/3, "word3": 1/3} #liste par Mathis
+
 pos_score = {}
-prob_pos = 0
+number_of_pos_com = 0
 
-for i in range (number_of_com) :
-    if data_treated[i][1] == True :
-        prob_pos += 1
+for i in range (len(data_treated)) :
+    if data_treated[i][1] == True : #if the comment is positive
+        number_of_pos_com += 1 #count the number of positive comments
+prob_pos = number_of_pos_com / len(data_treated) #calculate the probability that a comment is positive
 
+#deja present dans frequencyOfWords, ici pour avoir number_of_words
+words_list = []
+comments_list = []
+number_of_words = {}
+    
+for i in range (len(data_treated)) :
+    comments_list.append(data_treated[i][0].split()) #list of all comments with the words of each comment (separated by a space)
+    words_list = words_list + data_treated[i][0].split() #list of all words in all comments separated by a space
+
+for word in words_list :
+    number_of_words[word] = words_list.count(word) #count number of each word in all comments
+
+#besoin de creer une liste avec tous les mots (ici number_of_words)
 for word in number_of_words :
-    pos_score[word] = pos_and_contains_word[word] / prob_pos
+    pos_score[word] = freq_word_in_pos[word] / prob_pos #probability that the comment contains the word knowing it is positive
+ 
+print(pos_score)
