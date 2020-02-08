@@ -20,7 +20,7 @@ POUR LA SEMAINE PRO : partie "score de positivité" pour Jeanne et Mathis à fai
 - sortie : dictionnaire `freq_word_in_pos = {"word1": freq_word1_in_pos, "word2": freq_word2_in_pos}` (`freq_word_in_pos float entre 0 et 1`)
 
 ## Jeanne :  probabilité que le commentaire contienne le mot sachant qu’il est positif 
-- [ ] Calculer la probabilité que le mot soit présent dans le commentaire (word[i]) sachant que le commentaire est positif (ComPos), afin d’obtenir le score de positivité de chaque mot: `pos_score[i] = freq_word_in_pos / prob_pos`
+- [X] Calculer la probabilité que le mot soit présent dans le commentaire (word[i]) sachant que le commentaire est positif (ComPos), afin d’obtenir le score de positivité de chaque mot: `pos_score[i] = freq_word_in_pos / prob_pos`
 
 ### Format
 - entrée : dictionnaire `freq_word_in_pos`
