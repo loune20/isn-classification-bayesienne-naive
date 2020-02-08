@@ -44,7 +44,7 @@ def preProcessing(data_original):
     return(data_treated)
 
 
-def frequencyOfWords (data_set) :
+def frequencyOfWords (data_set) : #function that calculates the frequency of each word in all comments
 
     words_list = []
     comments_list = []
@@ -53,24 +53,24 @@ def frequencyOfWords (data_set) :
     word_counter = {}
     
     for i in range (len(data_treated)) :
-        comments_list.append(data_set[i][0].split()) #list of lists with words (separated by a space) of each comment
+        comments_list.append(data_set[i][0].split()) #list of all comments with the words of each comment (separated by a space)
         words_list = words_list + data_set[i][0].split() #list of all words in all comments separated by a space
     
     for word in words_list :
         number_of_words[word] = words_list.count(word) #count number of each word in all comments
     
     for word in number_of_words :
-        word_counter[word] = 0
+        word_counter[word] = 0 #create a dictionary with all the words as keys, and 0 as value
         for i in range (len(data_treated)) :
             if word in comments_list[i] : #count number of comments containing the word
-                word_counter[word] += 1
+                word_counter[word] += 1 #dictionary with the word and the number of comments containing the word
         freq_word[word] = word_counter[word]/len(data_treated) #frequency of comments containing the word
         
         if freq_word[word] <= 0.1 :
-            del freq_word[word] #delete words with a frequency <= 0.3    
+            del freq_word[word] #delete words with a frequency <= 0.1 in the list freq_word
 
     return (freq_word)
 
-data_treated = preProcessing(data_original)
-freq_words = frequencyOfWords(data_treated)
+data_treated = preProcessing(data_original) #text data pre-processing
+freq_words = frequencyOfWords(data_treated) #calculate the frequency of each word in all comments of data_treated
 print(freq_words)
