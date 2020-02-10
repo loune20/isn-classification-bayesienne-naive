@@ -2,8 +2,8 @@
 - [X] Renommer fonction Jeanne
 - [X] Voir ensemble convention de nommage
 - [X] Détailler la partie application de Bayes (ou pas ?)
-- [ ] Sprint 2 (correction du 1)
-- [ ] Code pour liste de tous les mots 
+- [ ] Sprint 2 (correction du 1) (je crois que c'est bon ça nan Jeanne ?)
+- [X] Code pour liste de tous les mots 
 - [ ] Mettre en commun et fignoler la partie 1
 POUR LA SEMAINE PRO : partie "score de positivité" pour Jeanne et Mathis à faire pour le 11 février
 
