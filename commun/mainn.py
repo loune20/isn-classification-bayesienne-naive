@@ -54,7 +54,6 @@ def frequencyOfWords (data_set): #function that calculates the frequency of each
 
     return (freq_word)
 
-
 def calculatePosScore(data_set): #function that calculates the positivity score of each word in comments
     comments_list_of_pos = [] #list with the (pre-processed) text of each positive com
     freq_word_in_pos = {}
