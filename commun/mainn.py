@@ -54,8 +54,6 @@ def frequencyOfWords (data_set): #function that calculates the frequency of each
 
     return (freq_word)
 
-#---------------------------------------------------
-#TODO : fonction à actualiser avec le code de Mathis
 
 def calculatePosScore(data_set): #function that calculates the positivity score of each word in comments
     comments_list_of_pos = [] #list with the (pre-processed) text of each positive com
