@@ -58,32 +58,27 @@ def frequencyOfWords (data_set): #function that calculates the frequency of each
 #TODO : fonction à actualiser avec le code de Mathis
 
 def frequencyOfWordsInPos (data_set): #function that calculates the frequency of each word in all comments
-
-    words_list_pos = []
-    comments_list = []
-    freq_word_pos = {}
-    number_of_words = {}
-    word_counter = {}
+    comments_list_of_pos = [] #list with the (pre-processed) text of each com positive
+    comments_pos =0
+    freq_word = {}
+    word_counter = {} #dictionary with the word and the number of comments positive containing the word
     
-    for i in range (len(data_treated)) :
-        comments_list.append(data_set[i][0].split()) #list of all comments with the words of each comment (separated by a space)
+    for i in range(len(data_set)):
         if data_set[i][1] == True :
-            words_list_pos = words_list_pos + data_set[i][0].split() #list of all words in all comments separated by a space
-    
-    for word in words_list_pos :
-        number_of_words[word] = words_list_pos.count(word) #count number of each word in all comments
-    
-    for word in number_of_words :
+            comments_list_of_pos.append(data_set[i][0])
+            comments_pos += 1
+    for word in words_list:
         word_counter[word] = 0 #create a dictionary with all the words as keys, and 0 as value
-        for i in range (len(data_treated)) :
-            if word in comments_list[i] : #count number of comments containing the word
-                word_counter[word] += 1 #dictionary with the word and the number of comments containing the word
-        freq_word_pos[word] = word_counter[word]/len(data_treated) #frequency of comments containing the word
+        for i in range (comments_pos):
+            if word in comments_list_of_pos[i]: #count number of comments positive containing the word
+                word_counter[word] += 1 
+        freq_word[word] = word_counter[word]/len(data_set) #frequency of comments positive containing the word
         
-        if freq_word_pos[word] <= 0.1 :
-            del freq_word_pos[word] #delete words with a frequency <= 0.1 in the list freq_word_pos
+        #if freq_word[word] <= 0.1:
+        #   del freq_word[word] #delete words with a frequency <= 0.1 in the list freq_word
 
-    return (freq_word_pos)
+    return (freq_word)
+
 
 #MAIN
 
@@ -117,7 +112,7 @@ for word in words_list:
 freq_words = frequencyOfWords(data_treated) 
 
 #Calculate the frequency of each word in all positive comments of data_treated
-freq_words_pos = frequencyOfWordsInPos(data_treated)
+freq_word_in_pos = frequencyOfWordsInPos(data_treated)
 
 #A mettre à la suite de la fonction de Mathis
 pos_score = {}
@@ -133,4 +128,5 @@ for word in words_list :
 
 #Printing etc...
 print(pos_score)
-print(freq_words_pos)
+print(freq_word_in_pos)
+
