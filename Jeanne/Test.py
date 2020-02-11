@@ -63,20 +63,7 @@ for i in range (len(data_treated)) :
         number_of_pos_com += 1 #count the number of positive comments
 prob_pos = number_of_pos_com / len(data_treated) #calculate the probability that a comment is positive
 
-#deja present dans frequencyOfWords, ici pour avoir number_of_words
-words_list = []
-comments_list = []
-number_of_words = {}
-    
-for i in range (len(data_treated)) :
-    comments_list.append(data_treated[i][0].split()) #list of all comments with the words of each comment (separated by a space)
-    words_list = words_list + data_treated[i][0].split() #list of all words in all comments separated by a space
-
 for word in words_list :
-    number_of_words[word] = words_list.count(word) #count number of each word in all comments
-
-#besoin de creer une liste avec tous les mots (ici number_of_words)
-for word in number_of_words :
     pos_score[word] = freq_word_in_pos[word] / prob_pos #probability that the comment contains the word knowing it is positive = word positivity score
  
 print(pos_score)
