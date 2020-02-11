@@ -11,13 +11,8 @@ On se propose d'utiliser comme outil Git(lab), [Jupyter](https://www.dataquest.i
 ---
 
 # To-do
-- [X] Renommer fonction Jeanne
-- [X] Voir ensemble convention de nommage
-- [X] Détailler la partie application de Bayes (ou pas ?)
 - [ ] Sprint 2 (correction du 1) (je crois que c'est bon ça nan Jeanne ?)
-- [X] Code pour liste de tous les mots 
-- [ ] Mettre en commun et fignoler la partie 1
-POUR LA SEMAINE PRO : partie "score de positivité" pour Jeanne et Mathis à faire pour le 11 février
+- [X] Mettre en commun et fignoler la partie 1
 
 
 # Score de positivité (22 février)
@@ -41,7 +36,7 @@ POUR LA SEMAINE PRO : partie "score de positivité" pour Jeanne et Mathis à fai
 
 # Bayes (3 mai)
 
-- [ ] Pour un com, faire une liste contentant tous les mots précédemment analysés (récupérer celle de Jeanne)
+- [ ] Pour un com, faire une liste contentant tous les mots précédemment analysés (récupérer celle de Jeanne) (words_list mais à actualiser)
 - [ ] Récuperer dans `pos_score` le score de chacun des mots
 - [ ] Appliquer Bayes avec la formule : `P(comPos |word1, word2, word3...) = (pos_score[word1]*pos_score[word2]*pos_score[3])/(freq_word[word1]*freq_word[word2]*freq_word[word3])`
 - [ ] Print le résultat de l'analyse
