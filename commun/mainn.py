@@ -57,28 +57,28 @@ def frequencyOfWords (data_set): #function that calculates the frequency of each
 #---------------------------------------------------
 #TODO : fonction à actualiser avec le code de Mathis
 
-def frequencyOfWordsInPos (data_set): #function that calculates the frequency of each word in all comments
-    comments_list_of_pos = [] #list with the (pre-processed) text of each com positive
-    comments_pos =0
-    freq_word = {}
+def calculatePosScore(data_set): #function that calculates the positivity score of each word in comments
+    comments_list_of_pos = [] #list with the (pre-processed) text of each positive com
+    freq_word_in_pos = {}
     word_counter = {} #dictionary with the word and the number of comments positive containing the word
+    pos_score = {}
+    number_of_pos_com = 0 #number of positive comments
     
     for i in range(len(data_set)):
-        if data_set[i][1] == True :
+        if data_set[i][1] == True : #if the comment is positive
             comments_list_of_pos.append(data_set[i][0])
-            comments_pos += 1
+            number_of_pos_com += 1
     for word in words_list:
         word_counter[word] = 0 #create a dictionary with all the words as keys, and 0 as value
-        for i in range (comments_pos):
+        for i in range (number_of_pos_com):
             if word in comments_list_of_pos[i]: #count number of comments positive containing the word
                 word_counter[word] += 1 
-        freq_word[word] = word_counter[word]/len(data_set) #frequency of comments positive containing the word
-        
-        #if freq_word[word] <= 0.1:
-        #   del freq_word[word] #delete words with a frequency <= 0.1 in the list freq_word
+        freq_word_in_pos[word] = word_counter[word]/len(data_set) #frequency of comments positive containing the word
 
-    return (freq_word)
+    for word in words_list :
+        pos_score[word] = freq_word_in_pos[word] / (number_of_pos_com / len(data_set)) #probability that the comment contains the word knowing it is positive = word positivity score
 
+    return(pos_score)
 
 #MAIN
 
@@ -112,21 +112,7 @@ for word in words_list:
 freq_words = frequencyOfWords(data_treated) 
 
 #Calculate the frequency of each word in all positive comments of data_treated
-freq_word_in_pos = frequencyOfWordsInPos(data_treated)
-
-#A mettre à la suite de la fonction de Mathis
-pos_score = {}
-number_of_pos_com = 0
-
-for i in range (len(data_treated)) :
-    if data_treated[i][1] == True : #if the comment is positive
-        number_of_pos_com += 1 #count the number of positive comments
-prob_pos = number_of_pos_com / len(data_treated) #calculate the probability that a comment is positive
-
-for word in words_list :
-    pos_score[word] = freq_word_in_pos[word] / prob_pos #probability that the comment contains the word knowing it is positive = word positivity score
+pos_score = calculatePosScore(data_treated)
 
 #Printing etc...
 print(pos_score)
-print(freq_word_in_pos)
-
