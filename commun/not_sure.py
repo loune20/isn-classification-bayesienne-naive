@@ -1,48 +1,33 @@
+#For testing purpose only
+#data_original = [['word1 okay', False], ['word2 super great', True], ['word2', True], ['word3', True], ['word2', True], ['super great', False]]
+
 import csv #importing csv python library
-      
-reader = csv.DictReader(open('curated_short_reviews_Video_Games_5.csv')) #opening file
-        
-data_original = [] #creating empty list
-for row in reader: #for each row in our csv file
-    data_original.append([row['reviewText'], row['overall']]) #adding at the end of the list a tuple of the summary and the rating extracted from the csv file
-    
 
-for i in range(len(data_original)):
-    if data_original[i][1] == "1":
-        data_original[i][1] = False
-    elif data_original[i][1] == "5":
-        data_original[i][1] = True
-    else:
-        print("Error : one of the comment has an overall that's neither 1 or 5")
-
-#VERIFIER ENCHAINEMENT AVEC UN DATASET
-
-def preProcessing(data_original):    
-    my_list = []
-    data_treated = []
-    index = []
+def preProcessing(data_original):  #function that puts in lowercase and removes stop-words and punctuation  
+    text_com = [] #List with all the text of each com (without their rates) 
+    data_treated = [] #List of the processed text of each com and the associated rate
+    index = [] #
     ponctuation = ['.',',',';',':','!','?','/','*','-','+','&','"','(',')','[',']','{','}','_','°','=','#',"'"]
     common = ['ourselves', 'hers', 'between', 'yourself', 'but', 'again', 'there', 'about', 'once', 'during', 'out', 'very', 'having', 'with', 'they', 'own', 'an', 'be', 'some', 'for', 'do', 'its', 'yours', 'such', 'into', 'of', 'most', 'itself', 'other', 'off', 'is', 's', 'am', 'or', 'who', 'as', 'from', 'him', 'each', 'the', 'themselves', 'until', 'below', 'are', 'we', 'these', 'your', 'his', 'through', 'don', 'nor', 'me', 'were', 'her', 'more', 'himself', 'this', 'down', 'should', 'our', 'their', 'while', 'above', 'both', 'up', 'to', 'ours', 'had', 'she', 'all', 'no', 'when', 'at', 'any', 'before', 'them', 'same', 'and', 'been', 'have', 'in', 'will', 'on', 'does', 'yourselves', 'then', 'that', 'because', 'what', 'over', 'why', 'so', 'can', 'did', 'not', 'now', 'under', 'he', 'you', 'herself', 'has', 'just', 'where', 'too', 'only', 'myself', 'which', 'those', 'i', 'after', 'few', 'whom', 't', 'being', 'if', 'theirs', 'my', 'against', 'a', 'by', 'doing', 'it', 'how', 'further', 'was', 'here', 'than','also','might']
-    for i in range(len(data_original)): #Populate empty list
-        data_treated.append(None)
-        my_list.append(data_original[i][0])
-        my_list[i] = my_list[i].lower() #put all in lowercase
+    for i in range(len(data_original)): 
+        data_treated.append(None) #Populate empty list
+        text_com.append(data_original[i][0])
+        text_com[i] = text_com[i].lower() #Lowercase evrything
         for j in range(len(ponctuation)):
-            my_list[i] = my_list[i].replace(ponctuation[j],'')
-        my_list[i] = my_list[i].split()
-        for j in range(len(my_list[i])):
+            text_com[i] = text_com[i].replace(ponctuation[j],'') #Remove punctuation
+        text_com[i] = text_com[i].split()
+        for j in range(len(text_com[i])):
             for k in range(len(common)):
-                if my_list[i][j] == common[k] : #find common
+                if text_com[i][j] == common[k] : #Find stop-words
                     index.append(j)
                     index.sort()
                     index.reverse()
         for l in range(len(index)):
-            del(my_list[i][index[l]])
+            del(text_com[i][index[l]]) #Remove stop-words
         index = []
-        my_list[i]=" ".join(my_list[i])
-        data_treated[i] = [my_list[i],data_original[i][1]]
+        text_com[i]=" ".join(text_com[i])
+        data_treated[i] = [text_com[i],data_original[i][1]]
     return(data_treated)
-
 
 def frequencyOfWords (data_set) : #function that calculates the frequency of each word in all comments
 
@@ -71,8 +56,7 @@ def frequencyOfWords (data_set) : #function that calculates the frequency of eac
 
     return (freq_word)
 
-
-def frequencyOfWordsPos (data_set) : #function that calculates the frequency of each word in all comments
+def frequencyOfWordsInPos (data_set) : #function that calculates the frequency of each word in all comments
 
     words_list_pos = []
     comments_list = []
@@ -100,15 +84,38 @@ def frequencyOfWordsPos (data_set) : #function that calculates the frequency of 
 
     return (freq_word_pos)
 
+#Extracting data from dataset     
+reader = csv.DictReader(open('curated_short_reviews_Video_Games_5.csv')) #opening file      
+data_original = [] #creating empty list
+for row in reader: #for each row in our csv file
+    data_original.append([row['reviewText'], row['overall']]) #adding at the end of the list a tuple of the summary and the rating extracted from the csv file
 
-data_treated = preProcessing(data_original) #text data pre-processing
-freq_words = frequencyOfWords(data_treated) #calculate the frequency of each word in all comments of data_treated
-print(freq_words)
-freq_words_pos = frequencyOfWordsPos(data_treated)
-print(freq_words_pos)
+#Changing 1 and 5 to False and True
+for i in range(len(data_original)):
+    if data_original[i][1] == "1":
+        data_original[i][1] = False
+    elif data_original[i][1] == "5":
+        data_original[i][1] = True
+    else:
+        print("Error : one of the comment has an overall that's neither 1 or 5")
 
-
-data_original = [("ourselves , are here in between the monkey is great", True), ("once upon a time the wizard was very happy it is a good news", False), ("blabla is a very good friend", True)]
+#Text data pre-processing
 data_treated = preProcessing(data_original)
-print(data_original)
-print(data_treated)
+
+#Creating a list of all the processed words
+words_list = []   
+for i in range (len(data_treated)):
+    words_list = words_list + data_treated[i][0].split() #list of all words (after pre-processing, in all comments)
+for word in words_list:
+    if words_list.count(word) > 1:
+        words_list.remove(word)
+
+#Calculate the frequency of each word in all comments of data_treated
+freq_words = frequencyOfWords(data_treated) 
+
+#Calculate the frequency of each word in all positive comments of data_treated
+freq_words_pos = frequencyOfWordsInPos(data_treated)
+
+#Printing etc...
+print(freq_words)
+print(freq_words_pos)
