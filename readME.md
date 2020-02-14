@@ -11,27 +11,7 @@ On se propose d'utiliser comme outil Git(lab), [Jupyter](https://www.dataquest.i
 ---
 
 # To-do
-- [ ] Sprint 2 (correction du 1) (je crois que c'est bon ça nan Jeanne ?)
-- [X] Mettre en commun et fignoler la partie 1
-
-
-# Score de positivité (22 février)
-
-## Mathis : fréquence d'appparition du mot dans les commentaires positifs
-- [X] Calculer fréquence apparition des mots de la liste `freq_word` dans les com positifs
-- [X] Associer chaque mot à cette fréquence
-- [X] Si elle est comprise entre 0.45 et 0.55 (ajuster) on supprime le mot de la liste
-
-### Format
-- entrée : dictionnaire `freq_word`
-- sortie : dictionnaire `freq_word_in_pos = {"word1": freq_word1_in_pos, "word2": freq_word2_in_pos}` (`freq_word_in_pos float entre 0 et 1`)
-
-## Jeanne :  probabilité que le commentaire contienne le mot sachant qu’il est positif 
-- [X] Calculer la probabilité que le mot soit présent dans le commentaire (word[i]) sachant que le commentaire est positif (ComPos), afin d’obtenir le score de positivité de chaque mot: `pos_score[i] = freq_word_in_pos / prob_pos`
-
-### Format
-- entrée : dictionnaire `freq_word_in_pos`
-- sortie : dictionnaire de type `pos_score = {"word1":pos_score1, "word2":pos_score2}` où `pos_score1` désigne le score de positivité de word1 (float compris entre 0 et 1)
+- [ ] Sprint 2 (correction du sprint 1 avec ce qu'on a réellement fait au final)
 
 
 # Bayes (3 mai)
@@ -78,5 +58,24 @@ On se propose d'utiliser comme outil Git(lab), [Jupyter](https://www.dataquest.i
 - entrée : `data_treated`
 - sortie : dictionnaire frequency_of_words = `{"word1":freq_word1, "word2":freq_word2}`
 - format : fonction `frequency_of_words()`
+
+
+# **DONE** Score de positivité (fini le 11 février)
+
+## Mathis : fréquence d'appparition du mot dans les commentaires positifs
+- [X] Calculer fréquence apparition des mots de la liste `freq_word` dans les com positifs
+- [X] Associer chaque mot à cette fréquence
+- [X] Si elle est comprise entre 0.45 et 0.55 (ajuster) on supprime le mot de la liste
+
+### Format
+- entrée : dictionnaire `freq_word`
+- sortie : dictionnaire `freq_word_in_pos = {"word1": freq_word1_in_pos, "word2": freq_word2_in_pos}` (`freq_word_in_pos float entre 0 et 1`)
+
+## Jeanne :  probabilité que le commentaire contienne le mot sachant qu’il est positif 
+- [X] Calculer la probabilité que le mot soit présent dans le commentaire (word[i]) sachant que le commentaire est positif (ComPos), afin d’obtenir le score de positivité de chaque mot: `pos_score[i] = freq_word_in_pos / prob_pos`
+
+### Format
+- entrée : dictionnaire `freq_word_in_pos`
+- sortie : dictionnaire de type `pos_score = {"word1":pos_score1, "word2":pos_score2}` où `pos_score1` désigne le score de positivité de word1 (float compris entre 0 et 1)
 
 ---
