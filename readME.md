@@ -2,7 +2,7 @@
 Projet d'isn écrit en **Python** pour s'initier au machine learning.  
 Cet exemple se base sur le site de [Lovely Analytics](https://lovelyanalytics.com/2018/10/04/classification-bayesienne-naive-comment-ca-marche/)  
 Pour en apprendre plus sur le théorême de Bayes (en anglais) : [ici](https://actuairesbigdata.wordpress.com/2016/01/13/une-explication-simple-de-classification-naive-bayesienne/) et [ici](https://arbital.com/p/bayes_rule/?l=1zq).  
-On se propose d'utiliser comme outil Git(lab), [Jupyter](https://www.dataquest.io/m/349-project-learn-and-install-jupyter-notebook/), Discord, [HackMD](https://hackmd.io/@loune/sprint1).  
+On se propose d'utiliser comme outil Git(lab), [Jupyter](https://www.dataquest.io/m/349-project-learn-and-install-jupyter-notebook/), Discord, HackMD : [Sprint1](https://hackmd.io/@loune/sprint1), [Sprint2](https://hackmd.io/@JeanneD/sprint2)
 
 ---
 
@@ -11,8 +11,8 @@ On se propose d'utiliser comme outil Git(lab), [Jupyter](https://www.dataquest.i
 ---
 
 # To-do
-- [ ] Sprint 2 (correction du sprint 1 avec ce qu'on a réellement fait au final)
-
+- [X] Sprint 2 (correction du sprint 1 avec ce qu'on a réellement fait au final) LIEN [ICI](https://hackmd.io/@JeanneD/sprint2) (si vous pouvez vérifier que ça marche bien et que vous pouvez modifier)
+- [ ] Se répartir plus en détail les tâches à faire pour la 3ème partie
 
 # Bayes (3 mai)
 
