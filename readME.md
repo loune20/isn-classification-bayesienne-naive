@@ -22,7 +22,7 @@ On se propose d'utiliser comme outil Git(lab), [Jupyter](https://www.dataquest.i
 - [ ] Print le résultat de l'analyse
 
 
-# **DONE** Tri divers (31 janvier)
+# **DONE** Tri divers (fini le 4 février)
 
 ## Louise
 - [X] Télécharger et ouvrir un fichier json contenant un dataset de commentaires Amazon en anglais (commentaires et avis associés à une note allant de 1 à 5 étoiles) que l’on peut trouver sur internet et le convertir en un fichier csv.
