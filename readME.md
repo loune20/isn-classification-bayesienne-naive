@@ -12,14 +12,14 @@ On se propose d'utiliser comme outil Git(lab), [Jupyter](https://www.dataquest.i
 
 # To-do
 - [X] Sprint 2 (correction du sprint 1 avec ce qu'on a réellement fait au final) LIEN [ICI](https://hackmd.io/@JeanneD/sprint2) (si vous pouvez vérifier que ça marche bien et que vous pouvez modifier)
-- [ ] Se répartir plus en détail les tâches à faire pour la 3ème partie
+- [X] Se répartir plus en détail les tâches à faire pour la 3ème partie
 
 # Bayes (3 mai)
 
-- [ ] Pour un com, faire une liste contentant tous les mots précédemment analysés (récupérer celle de Jeanne) (words_list mais à actualiser)
-- [ ] Récuperer dans `pos_score` le score de chacun des mots
-- [ ] Appliquer Bayes avec la formule : `P(comPos |word1, word2, word3...) = (pos_score[word1]*pos_score[word2]*pos_score[3])/(freq_word[word1]*freq_word[word2]*freq_word[word3])`
-- [ ] Print le résultat de l'analyse
+- [ ] Pour un com, faire une liste contentant tous les mots précédemment analysés (récupérer celle de Jeanne) (words_list mais à actualiser) (Jeanne)
+- [ ] Récuperer dans `pos_score` le score de chacun des mots (Jeanne)
+- [ ] Appliquer Bayes avec la formule : `P(comPos |word1, word2, word3...) = (pos_score[word1]*pos_score[word2]*pos_score[3])/(freq_word[word1]*freq_word[word2]*freq_word[word3])` (Mathis si pas GUI, sinon Louise)
+- [ ] Print le résultat de l'analyse : interface graphique (Louise si pygame, Mathis si Tkinter)
 
 
 # **DONE** Tri divers (fini le 4 février)
