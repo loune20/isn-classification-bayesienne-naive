@@ -116,7 +116,7 @@ def newCommentAnalysis(new_com):  # Analysis of a new comment
 # MAIN
 
 # Extracting data from dataset
-reader = csv.DictReader(open('datacool.csv'))  # opening file
+reader = csv.DictReader(open('data_videogames.csv'))  # opening file
 data_original = []  # creating empty list
 for row in reader:  # for each row in our csv file
     data_original.append([row['reviewText'], row['overall']])  # adding at the end of the list a tuple of the summary and the rating extracted from the csv file
