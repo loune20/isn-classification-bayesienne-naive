@@ -63,7 +63,8 @@ def frequencyOfWords(data_set):  # function that calculates the frequency of eac
 
         if freq_word[word] <= 0.1:
             del freq_word[word]  # delete words with a frequency <= 0.1 in the list freq_word
-
+            words_list.remove(word)  # update the list of analyzed words
+            
     return (freq_word)
 
 
