@@ -50,6 +50,7 @@ def frequencyOfWords(data_set):  # function that calculates the frequency of eac
     comments_list = []  # list with all the (pre-processed) text of each com (without their rates)
     freq_word = {}
     word_counter = {}  # dictionary with the word and the number of comments containing the word
+    words_to_delete = []  # intermediary list used to update words_list
 
     for i in range(len(data_set)):
         comments_list.append(data_set[i][0])
@@ -61,10 +62,13 @@ def frequencyOfWords(data_set):  # function that calculates the frequency of eac
                 word_counter[word] += 1
         freq_word[word] = word_counter[word]/len(data_set)  # frequency of comments containing the word
 
-        if freq_word[word] <= 0.1:
-            del freq_word[word]  # delete words with a frequency <= 0.1 in the list freq_word
-            words_list.remove(word)  # update the list of analyzed words
-            
+        if freq_word[word] <= 0.08:
+            del freq_word[word]  # delete words with a frequency <= 0.08 in the dict freq_word
+            words_to_delete.append(word)
+    
+    for word in words_to_delete:
+        words_list.remove(word)  # update the list of analyzed words
+    
     return (freq_word)
 
 
@@ -112,7 +116,7 @@ def newCommentAnalysis(new_com):  # Analysis of a new comment
 # MAIN
 
 # Extracting data from dataset
-reader = csv.DictReader(open('curated_short_reviews_Video_Games_5.csv'))  # opening file
+reader = csv.DictReader(open('datacool.csv'))  # opening file
 data_original = []  # creating empty list
 for row in reader:  # for each row in our csv file
     data_original.append([row['reviewText'], row['overall']])  # adding at the end of the list a tuple of the summary and the rating extracted from the csv file
@@ -144,7 +148,7 @@ freq_words = frequencyOfWords(data_treated)
 pos_score = calculatePosScore(data_treated)
 
 # Analyze a new comment
-comment_analysis = newCommentAnalysis(['This game was a It has less , less , and less  than  2.  The graphics are about the same.  Not',False])
+comment_analysis = newCommentAnalysis(['This game was a It has less , less worth rip-off bad bad bad bad , and less  than  2.  The graphics are about the same.  Not',False])
 
 # Printing etc...
 print(comment_analysis)
