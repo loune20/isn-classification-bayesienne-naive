@@ -28,7 +28,7 @@ def preProcessing(data_original):  # function that puts in lowercase and removes
     for i in range(len(data_original)):
         data_treated.append(None)  # Populate empty list
         text_com.append(data_original[i][0])
-        text_com[i] = text_com[i].lower()  # Lowercase evrything
+        text_com[i] = text_com[i].lower()  # Lowercase everything
         for j in range(len(ponctuation)):
             text_com[i] = text_com[i].replace(ponctuation[j], '')  # Remove punctuation
         text_com[i] = text_com[i].split()
