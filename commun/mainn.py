@@ -93,6 +93,7 @@ def calculatePosScore(data_set):  # function that calculates the positivity scor
 
 def newCommentAnalysis(new_com):  # Analysis of a new comment
     analyzed_words = []  # Analyzed words which are in the comment
+    comment_positivity = 1
     
     new_com[0] = new_com[0].lower()  # Lowercase the comment
     for i in range(len(ponctuation)):
@@ -102,6 +103,10 @@ def newCommentAnalysis(new_com):  # Analysis of a new comment
     for i in range (len(new_com[0])):
         if new_com[0][i] in words_list:
             analyzed_words.append(new_com[0][i])  # Add analyzed words present in the com to the list
+    
+    for i in range (len(analyzed_words)):
+        comment_positivity = comment_positivity * (pos_score[analyzed_words[i]]/freq_words[analyzed_words[i]])
+    return(comment_positivity)
 
 # MAIN
 
@@ -138,7 +143,7 @@ freq_words = frequencyOfWords(data_treated)
 pos_score = calculatePosScore(data_treated)
 
 # Analyze a new comment
-new_com_pos = newCommentAnalysis(['Word1, And word2 word3',False])
+comment_analysis = newCommentAnalysis(['This game was a It has less , less , and less  than  2.  The graphics are about the same.  Not',False])
 
 # Printing etc...
-print(pos_score)
+print(comment_analysis)
