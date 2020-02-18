@@ -90,6 +90,19 @@ def calculatePosScore(data_set):  # function that calculates the positivity scor
 
     return(pos_score)
 
+
+def newCommentAnalysis(new_com):  # Analysis of a new comment
+    analyzed_words = []  # Analyzed words which are in the comment
+    
+    new_com[0] = new_com[0].lower()  # Lowercase the comment
+    for i in range(len(ponctuation)):
+        new_com[0] = new_com[0].replace(ponctuation[i], '')  # Remove punctuation
+    new_com[0] = new_com[0].split()  # Split the words of the comment
+    
+    for i in range (len(new_com[0])):
+        if new_com[0][i] in words_list:
+            analyzed_words.append(new_com[0][i])  # Add analyzed words present in the com to the list
+
 # MAIN
 
 # Extracting data from dataset
@@ -123,6 +136,9 @@ freq_words = frequencyOfWords(data_treated)
 
 # Calculate the frequency of each word in all positive comments of data_treated
 pos_score = calculatePosScore(data_treated)
+
+# Analyze a new comment
+new_com_pos = newCommentAnalysis(['Word1, And word2 word3',False])
 
 # Printing etc...
 print(pos_score)
