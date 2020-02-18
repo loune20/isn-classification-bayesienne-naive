@@ -134,7 +134,7 @@ for i in range(len(data_treated)):
     words_list = words_list + data_treated[i][0].split()  # list of all words (after pre-processing, in all comments)
 for word in words_list:
     if words_list.count(word) > 1:
-        words_list.remove(word)
+        words_list.remove(word)  # delete duplicate words
 
 # Calculate the frequency of each word in all comments of data_treated
 freq_words = frequencyOfWords(data_treated)
