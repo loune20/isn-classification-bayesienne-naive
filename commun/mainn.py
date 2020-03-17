@@ -1,8 +1,5 @@
-# For testing purpose only
-# data_original = [['word1 okay', False], ['word2 super great', True], ['word2', True], ['word3', True], ['word2', True], ['super great', False]]
-
 # IMPORTING LIBRARIES
-import csv  # importing csv python library
+import csv  # Importing csv python library
 
 # GLOBAL VARIABLES
 ponctuation = ['.', ',', ';', ':', '!', '?', '/', '*', '-', '+', '&', '"',
@@ -16,41 +13,41 @@ common = ['ourselves', 'hers', 'between', 'yourself', 'but', 'again', 'there', '
           'same', 'and', 'been', 'have', 'in', 'will', 'on', 'does', 'yourselves', 'then', 'that', 'because', 'what',
           'over', 'why', 'so', 'can', 'did', 'not', 'now', 'under', 'he', 'you', 'herself', 'has', 'just',
           'where', 'too', 'only', 'myself', 'which', 'those', 'i', 'after', 'few', 'whom', 't', 'being', 'if',
-          'theirs', 'my', 'against', 'a', 'by', 'doing', 'it', 'how', 'further', 'was', 'here', 'than', 'also', 'might']
+          'theirs', 'my', 'against', 'a', 'by', 'doing', 'it', 'how', 'further', 'was', 'here', 'than', 'also', 'might'] # Stop-words the algorithm won't analyse
 
 
 # FUNCTIONS
-def preProcessing(data_original):  # function that puts in lowercase and removes stop-words and punctuation
-    text_com = []  # list with all the text of each com (without their rates)
+def preProcessing(data_original):  # Function that puts in lowercase and removes stop-words and punctuation from a list 
+    text_com = []  # List with all the text of each com (without their rates)
     data_treated = []  # List of the processed text of each com and the associated rate
-    index = []
+    index = [] # List to temp store what's being processed
 
     for i in range(len(data_original)):
         data_treated.append(None)  # Populate empty list
-        text_com.append(data_original[i][0])
+        text_com.append(data_original[i][0]) # Fill text_com with only the text of each comment
         text_com[i] = text_com[i].lower()  # Lowercase everything
         for j in range(len(ponctuation)):
             text_com[i] = text_com[i].replace(ponctuation[j], '')  # Remove punctuation
-        text_com[i] = text_com[i].split()
+        text_com[i] = text_com[i].split() # Split list to individually find stop-words
         for j in range(len(text_com[i])):
             for k in range(len(common)):
                 if text_com[i][j] == common[k]:  # Find stop-words
                     index.append(j)
                     index.sort()
-                    index.reverse()
+                    index.reverse() # Words will be removed from last to first, putting them back in order (so that the list index isn't modifed and all words are analysed)
         for l in range(len(index)):
             del(text_com[i][index[l]])  # Remove stop-words
         index = []
-        text_com[i] = " ".join(text_com[i])
-        data_treated[i] = [text_com[i], data_original[i][1]]
+        text_com[i] = " ".join(text_com[i]) # Refrom a "comment" with all significant word of a comment and spaces between them
+        data_treated[i] = [text_com[i], data_original[i][1]] # Create the outpu list with the preprocessed comment and its rate
     return(data_treated)
 
 
-def frequencyOfWords(data_set):  # function that calculates the frequency of each word in all comments
-    comments_list = []  # list with all the (pre-processed) text of each com (without their rates)
-    freq_word = {}
-    word_counter = {}  # dictionary with the word and the number of comments containing the word
-    words_to_delete = []  # intermediary list used to update words_list
+def frequencyOfWords(data_set):  # Function that calculates the frequency of each word in all comments
+    comments_list = []  # List with all the (pre-processed) text of each com (without their rates) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! à renommer text_com
+    freq_word = {} # Temp list (like freq_words but inside the fonction) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    word_counter = {}  # Dictionary with the word and the number of comments containing the word
+    words_to_delete = []  # Intermediary list used to update words_list (global list)
 
     for i in range(len(data_set)):
         comments_list.append(data_set[i][0])
@@ -152,3 +149,4 @@ comment_analysis = newCommentAnalysis(['This game was a It has less , less worth
 
 # Printing etc...
 print(comment_analysis)
+
