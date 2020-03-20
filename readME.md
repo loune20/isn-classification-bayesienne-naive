@@ -7,11 +7,12 @@ On se propose d'utiliser comme outil Git(lab), [Jupyter](https://www.dataquest.i
 ---
 
 [Amazon dataset](http://jmcauley.ucsd.edu/data/amazon/),
-[app store dataset](https://medium.com/the-research-nest/data-science-tutorial-analysis-of-the-google-play-store-dataset-c720330d4903)
+[App store dataset](https://medium.com/the-research-nest/data-science-tutorial-analysis-of-the-google-play-store-dataset-c720330d4903),
+[Video Games Amazon dataset](http://snap.stanford.edu/data/amazon/productGraph/categoryFiles/reviews_Video_Games_5.json.gz)
 ---
 
 # To-do
-- [X] Sprint 2 (correction du sprint 1 avec ce qu'on a réellement fait au final) LIEN [ICI](https://hackmd.io/@JeanneD/sprint2) (si vous pouvez vérifier que ça marche bien et que vous pouvez modifier)
+- [X] Sprint 2 (correction du sprint 1 avec ce qu'on a réellement fait au final) LIEN [ICI](https://hackmd.io/@JeanneD/sprint2)
 - [X] Se répartir plus en détail les tâches à faire pour la 3ème partie
 
 # Bayes (3 mai)
