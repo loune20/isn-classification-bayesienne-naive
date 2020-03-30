@@ -18,96 +18,84 @@ common = ['ourselves', 'hers', 'between', 'yourself', 'but', 'again', 'there', '
 
 # FUNCTIONS
 def preProcessing(data_original):  # Function that puts in lowercase and removes stop-words and punctuation from a list 
-    text_com = []  # List with all the text of each com (without their rates)
     data_treated = []  # List of the processed text of each com and the associated rate
-    index = []  # List of indexes of words to remove
-
-    for i in range(len(data_original)):  # For each comment
-        data_treated.append(None)  # Populate empty list
-        text_com.append(data_original[i][0])  # Fill text_com with only the text of each comment
-        text_com[i] = text_com[i].lower()  # Lowercase everything
-        for j in range(len(ponctuation)):  # For each punctuation sign
-            text_com[i] = text_com[i].replace(ponctuation[j], '')  # Remove punctuation
-        text_com[i] = text_com[i].split()  # Split list to individually find stop-words
-        for j in range(len(text_com[i])):  # For each word (in each comments)
-            for k in range(len(common)):  # For each stop-word
-                if text_com[i][j] == common[k]:  # Find stop-words
-                    index.append(j)
-                    index.sort()
-                    index.reverse()  # Words will be removed from last to first, putting them back in order (so that the list index isn't modifed and all words are analysed)
-        for l in range(len(index)):  #  For each index of stop-words to remove
-            del(text_com[i][index[l]])  # Remove it
-        index = []
-        text_com[i] = " ".join(text_com[i])  # Reform a "comment" with all significant word of a comment and spaces between them
-        data_treated[i] = [text_com[i], data_original[i][1]]  # Create the output list with the preprocessed comment and its rate
     
+    for comment in data_original:  # For each comment
+        text_comment = comment[0].lower()  # Lowercase all comments and add in text_comment 
+        for p in ponctuation:  # Remove all punctuation signs
+            text_comment = text_comment.replace(p, '')
+        text_comment = text_comment.split()  # Split list to individually find stop-words
+        for word in text_comment.copy():  # For each word of the comment
+            if word in common:  # Remove all stop-words
+                text_comment.remove(word)
+        text_comment = ' '.join(text_comment)  # Reform a "comment" with all significant word of a comment and spaces between them
+        data_treated.append([text_comment, comment[1]])  # Add to data_treated a list with the preprocessed comment and its rate
+        
     return(data_treated)
 
 
-def frequencyOfWords(data_set):  # Function that calculates the frequency of each word in all comments
-    text_com = []  # List with all the (pre-processed) text of each com (without their rates) 
+def frequencyOfWords(data_treated):  # Function that calculates the frequency of each word in all comments
     freq_words = {}  # List with the frequency of each word in all comments
     word_counter = {}  # Dictionary with the word and the number of comments containing the word
-    words_to_delete = []  # Intermediary list used to update words_list (global list)
+    number_of_comments = len(data_treated)
 
-    for i in range(len(data_set)):  # For each comment
-        text_com.append(data_set[i][0])  # Filling up text_com
-
-    for word in words_list:  # For all significant word
+    for word in words_list.copy():  # For all significant word
         word_counter[word] = 0  # Create a dictionary with all the words as keys, and 0 as value
-        for i in range(len(data_set)):  # For each comment
-            if word in text_com[i]:  # Count how many comments contain the word
+        for comment in data_treated:  # For each comment
+            if word in comment[0]:  # Count how many comments contain the word
                 word_counter[word] += 1
-        freq_words[word] = word_counter[word]/len(data_set)  # Calculating frequency of comments containing the word
+        freq_words[word] = word_counter[word]/number_of_comments  # Calculating frequency of comments containing the word
         if freq_words[word] <= 0.08: # If the frequency of a word <= 0.08
             del freq_words[word]  # Delete the word in freq_word
-            words_to_delete.append(word)
-    
-    for word in words_to_delete:
-        words_list.remove(word)  # Update the list of significant words
-    
+            words_list.remove(word)  # Update the list of significant words
+
     return (freq_words)
 
 
-def calculatePosScore(data_set):  # Function that calculates the positivity score of each word in comments
-    text_com_pos = []  # List with all the (pre-processed) text of each positive com
-    freq_word_in_pos = {} # List with the frequency of each word in all positive comments
+def calculatePosScore(data_treated):  # Function that calculates the positivity score of each word in comments
+    text_com_positive = []  # List with all the (pre-processed) text of each positive com
+    freq_word_in_positive = {} # List with the frequency of each word in all positive comments
     word_counter = {}  # Dictionary with the word and the number of positive comments containing the word
     pos_score = {} # Dictionnary with a word and its positivity score
-    number_of_pos_com = 0  # Number of positive comments 
+    number_of_positive_com = 0  # Number of positive comments
+    
+    number_of_comments = len(data_treated)
 
-    for i in range(len(data_set)): # For each comment
-        if data_set[i][1]:  # If the comment is positive
-            text_com_pos.append(data_set[i][0])  # Filling up text_com_pos
-            number_of_pos_com += 1  # Incrementing number_of_pos_com
+    for comment in data_treated: # For each comment
+        if comment[1]:  # If the comment is positive
+            text_com_positive.append(comment[0])  # Filling up text_com_positive
+            number_of_positive_com += 1  # Incrementing number_of_positive_com
     for word in words_list:  # For each significant word
         word_counter[word] = 0  # Filling up dictionary with all the words as keys, and 0 as value
-        for i in range(number_of_pos_com):  # For each positive comment
-            if word in text_com_pos[i]:  # Count number of positive comments containing the word
+        for pos_comment in text_com_positive:  # For each positive comment
+            if word in pos_comment:  # Count number of positive comments containing the word
                 word_counter[word] += 1
-        freq_word_in_pos[word] = word_counter[word]/len(data_set)  # Frequency of positive comments containing the word
-        pos_score[word] = freq_word_in_pos[word] / (number_of_pos_com / len(data_set))  # Filling up pos_score with the probability that the comment contains the word knowing it is positive
+        freq_word_in_positive[word] = word_counter[word]/number_of_comments  # Frequency of positive comments containing the word
+        pos_score[word] = freq_word_in_positive[word] / (number_of_positive_com / number_of_comments)  # Filling up pos_score with the probability that the comment contains the word knowing it is positive
 
     return(pos_score)
 
 
-def newCommentAnalysis(new_com):  # Calculate positivity of a new comment ; new_com is ["comment", rating]
-    analyzed_words = []  # List of analyzed words which are in the comment
-    comment_positivity = 1 # Positivity score of the comment, must be 1 before calculations 
+def newCommentAnalysis(new_comment):  # Calculate positivity of a new comment ; new_comment is ["comment", rating]
+    comment_positivity = 1 # Positivity score of the comment, must be 1 before calculations
+    has_significant_word = False
+    new_comment_text = new_comment[0]
     
-    new_com[0] = new_com[0].lower()  # Lowercase the comment
-    for i in range(len(ponctuation)):
-        new_com[0] = new_com[0].replace(ponctuation[i], '')  # Remove punctuation
-    new_com[0] = new_com[0].split()  # Split the words of the comment
+    new_comment_text = new_comment_text.lower()  # Lowercase the comment
+    for p in ponctuation:
+        new_comment_text = new_comment_text.replace(p, '')  # Remove punctuation
+    new_comment_text = new_comment_text.split()  # Split the words of the comment
     
-    for i in range (len(new_com[0])):  # For each word in the comment
-        if new_com[0][i] in words_list:  # If the word is significant
-            analyzed_words.append(new_com[0][i])  # Add it to the list analyzed_words
+    for word in new_comment_text:  # Calculate the probability that the comment is positive
+        if word in words_list:
+            has_significant_word = True
+            comment_positivity = comment_positivity * (pos_score[word]/freq_words[word])
     
-    for i in range (len(analyzed_words)):  # For each significant word in the comment
-        comment_positivity = comment_positivity * (pos_score[analyzed_words[i]]/freq_words[analyzed_words[i]])  # Calculate the probability that the comment is positive
-    
-    return(comment_positivity)
+    if has_significant_word == False:
+        print("Sorry, I can't analyse this comment beacause it contains no significant word...")
+        return(None)
+    else:
+        return(comment_positivity)
 
 # MAIN
 
@@ -131,8 +119,8 @@ data_treated = preProcessing(data_original)
 
 # Creating a list of all the processed words
 words_list = []
-for i in range(len(data_treated)):  # For each comment
-    words_list = words_list + data_treated[i][0].split()  # Filling up the list with all words (after pre-processing, in all comments)
+for comment in data_treated:  # For each comment
+    words_list = words_list + comment[0].split()  # Filling up the list with all words (after pre-processing, in all comments)
 for word in words_list:  # For each word (except stop-words)
     if words_list.count(word) > 1:
         words_list.remove(word)  # Delete duplicate words
@@ -144,7 +132,8 @@ freq_words = frequencyOfWords(data_treated)
 pos_score = calculatePosScore(data_treated)
 
 # Analyze a new comment
-comment_analysis = newCommentAnalysis(['This game was a It has less , less worth rip-off bad bad bad bad , and less  than  2.  The graphics are about the same.  Not',False])
+comment_analysis = newCommentAnalysis([""" This great""",False])
 
 # Printing
-print(comment_analysis)
+if comment_analysis:
+    print(comment_analysis)
