@@ -17,7 +17,13 @@ common = ['ourselves', 'hers', 'between', 'yourself', 'but', 'again', 'there', '
 
 
 # FUNCTIONS
-def preProcessing(data_original):  # Function that puts in lowercase and removes stop-words and punctuation from a list 
+def preProcessing(data_original): 
+    '''
+    Put in lowercase and remove stop-words and punctuation from text comments.
+    data_original: [("Comment", rating_boolean), ("Comment2", rating_boolean)]
+    return data_treated: [["comment", rating_boolean], ["comment2", rating_boolean]]
+    '''
+    
     data_treated = []  # List of the processed text of each com and the associated rate
     
     for comment in data_original:
@@ -34,7 +40,13 @@ def preProcessing(data_original):  # Function that puts in lowercase and removes
     return(data_treated)
 
 
-def frequencyOfWords(data_treated):  # Function that calculates the frequency of each word in all comments
+def frequencyOfWords(data_treated):
+    '''
+    Calculate the frequency of each word in all comments.
+    data_treated: [["comment", rating_boolean], ["comment2", rating_boolean]]
+    return word_frequency: {"word": frequency, "word2": frequency}
+    '''
+    
     word_frequency = {}  # List with the frequency of each word in all comments
     number_of_comments_with_word = {}  # Dictionary with the word and the number of comments containing the word
     number_of_comments = len(data_treated)
@@ -52,9 +64,15 @@ def frequencyOfWords(data_treated):  # Function that calculates the frequency of
     return (word_frequency)
 
 
-def calculatePosScore(data_treated):  # Function that calculates the positivity score of each word in comments
+def calculatePosScore(data_treated):
+    '''
+    Calculate the positivity score of each word in comments.
+    data_treated: [["comment", rating_boolean], ["comment2", rating_boolean]]
+    return word_positivity_score: {"word": positivity_score, "word2": positivity_score}
+    '''
+    
     text_positive_comment = []  # List with all the (pre-processed) text of each positive com
-    word_frequency_in_positive = {} # List with the frequency of each word in all positive comments
+    word_frequency_in_positive = {} # Dictionary with the word and its frequency in all positive comments
     number_of_comments_with_word = {}  # Dictionary with the word and the number of positive comments containing it
     word_positivity_score = {} # Dictionnary with the word and its positivity score
     number_of_positive_comments = 0
@@ -75,7 +93,13 @@ def calculatePosScore(data_treated):  # Function that calculates the positivity 
     return(word_positivity_score)
 
 
-def newCommentAnalysis(new_comment):  # Calculate positivity of a new comment ; new_comment is ["comment", rating]
+def newCommentAnalysis(new_comment):
+    '''
+    Calculate the positivity of a new comment.
+    new_comment: ["Comment", rating]
+    return comment_positivity: probability_of_positive
+    '''
+    
     comment_positivity = 1 # Positivity score of the comment, must be 1 before calculations
     has_significant_word = False
     new_comment_text = new_comment[0]
