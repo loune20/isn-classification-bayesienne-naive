@@ -99,7 +99,7 @@ def newCommentAnalysis(new_comment):  # Calculate positivity of a new comment ; 
 # MAIN
 
 # Extracting data from dataset
-reader = csv.DictReader(open('data_videogames.csv'))  # Opening file
+reader = csv.DictReader(open('data_videogames.csv'), delimiter=';')  # Opening file
 data_original = []  # Creating empty list
 for row in reader:  # For each row in our csv file
     data_original.append([row['reviewText'], row['overall']])  # Filling up the list with a tuple of the summary and the rating extracted from the csv file
