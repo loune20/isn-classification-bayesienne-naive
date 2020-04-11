@@ -64,43 +64,46 @@ def frequencyOfWords(data_treated):
     return (word_frequency)
 
 
-def calculatePosScore(data_treated):
+def calculatePosScore(data_treated,rating):
     '''
-    Calculate the positivity score of each word in comments.
+    Calculate the positivity or negativity score of each word in comments.
     data_treated: [["comment", rating_boolean], ["comment2", rating_boolean]]
+    rating: True or False
     return word_positivity_score: {"word": positivity_score, "word2": positivity_score}
     '''
     
-    text_positive_comment = []  # List with all the (pre-processed) text of each positive com
-    word_frequency_in_positive = {} # Dictionary with the word and its frequency in all positive comments
-    number_of_comments_with_word = {}  # Dictionary with the word and the number of positive comments containing it
+    text_selected_comment = []  # List with all the (pre-processed) text of each positive/negative comment (depends on rating)
+    word_frequency_in_selected = {} # Dictionary with the word and its frequency in all positive/negative comments
+    number_of_comments_with_word = {}  # Dictionary with the word and the number of positive/negative comments containing it
     word_positivity_score = {} # Dictionnary with the word and its positivity score
-    number_of_positive_comments = 0
+    number_of_selected_comments = 0  # Number of positive/negative comments
     number_of_comments = len(data_treated)
 
     for comment in data_treated: # For each comment
-        if comment[1]:  # If the comment is positive
-            text_positive_comment.append(comment[0])  # Filling up text_positive_comment
-            number_of_positive_comments += 1
+        if comment[1]==rating:  # If the comment is positive/negative
+            text_selected_comment.append(comment[0])  # Filling up text_selected_comment
+            number_of_selected_comments += 1
     for word in significant_words:  # For each significant word
         number_of_comments_with_word[word] = 0  # Filling up dictionary with all the words as keys and 0 as value
-        for positive_comment in text_positive_comment:  # For each positive comment
-            if word in positive_comment:  # Count number of positive comments containing the word
+        for comment in text_selected_comment:  # For each positive/negative comment
+            if word in comment:  # Count number of positive/negative comments containing the word
                 number_of_comments_with_word[word] += 1
-        word_frequency_in_positive[word] = number_of_comments_with_word[word]/number_of_comments  # Frequency of positive comments containing the word
-        word_positivity_score[word] = word_frequency_in_positive[word] / (number_of_positive_comments / number_of_comments)  # Filling up word_positivity_score with the probability that the comment contains the word knowing it is positive
+        word_frequency[word] = number_of_comments_with_word[word]/number_of_comments  # Frequency of positive/negative comments containing the word
+        word_positivity_score[word] = word_frequency[word] / (number_of_selected_comments / number_of_comments)  # Probability that the comment contains the word knowing it is positive/negative
 
     return(word_positivity_score)
 
 
 def newCommentAnalysis(new_comment):
     '''
-    Calculate the positivity of a new comment.
+    Calculate the positivity and negativity of a new comment.
     new_comment: ["Comment", rating]
     return comment_positivity: probability_of_positive
+    return comment_negativity: probability_of_negative
     '''
     
     comment_positivity = 1 # Positivity score of the comment, must be 1 before calculations
+    comment_negativity = 1 # Negativity score of the comment, must be 1 before calculations
     has_significant_word = False
     new_comment_text = new_comment[0]
     
@@ -109,21 +112,26 @@ def newCommentAnalysis(new_comment):
         new_comment_text = new_comment_text.replace(p, '')
     new_comment_text = new_comment_text.split()  # Split the words of the comment
     
-    for word in new_comment_text:  # Calculate the probability that the comment is positive
+    for word in new_comment_text:  # Calculate the probability that the comment is positive or negative
         if word in significant_words:
             has_significant_word = True
             comment_positivity = comment_positivity * (word_positivity_score[word]/word_frequency[word])
+            comment_negativity = comment_negativity * (word_negativity_score[word]/word_frequency[word])
+            
+    print("pos: ", comment_positivity, "neg: ", comment_negativity)    
     
     if has_significant_word == False:
         print("Sorry, I can't analyse this comment beacause it contains no significant word...")
         return(None)
-    else:
-        return(comment_positivity)
+    elif comment_positivity > comment_negativity:
+        return("This comment has a rating of 5 !" )
+    else :
+        return("This comment has a rating of 1 !")
 
 # MAIN
 
 # Extracting data from dataset
-reader = csv.DictReader(open('data_videogames.csv'), delimiter=';')  # Opening file
+reader = csv.DictReader(open('data_videogames(400 lignes).csv'), delimiter=';')  # Opening file
 data_original = []  # Creating empty list
 for row in reader:  # For each row in our csv file
     data_original.append([row['reviewText'], row['overall']])  # Filling up the list with a tuple of the summary and the rating extracted from the csv file
@@ -148,14 +156,13 @@ for word in significant_words:  # For each word (except stop-words)
     if significant_words.count(word) > 1:  # Delete duplicate words
         significant_words.remove(word)
 
-# Calculate the frequency of each word in all comments of data_treated
-word_frequency = frequencyOfWords(data_treated)
-
-# Calculate the frequency of each word in all positive comments of data_treated
-word_positivity_score = calculatePosScore(data_treated)
+# Words analysis
+word_frequency = frequencyOfWords(data_treated)  # Calculate the frequency of each word in all comments of data_treated
+word_positivity_score = calculatePosScore(data_treated,True)  # Calculate the frequency of each word in all positive comments of data_treated
+word_negativity_score = calculatePosScore(data_treated,False)  # Calculate the frequency of each word in all negative comments of data_treated
 
 # Analyze a new comment
-comment_analysis = newCommentAnalysis([""" This great""",False])
+comment_analysis = newCommentAnalysis([""" This bad sad difficult""",False])
 
 # Printing
 if comment_analysis:
