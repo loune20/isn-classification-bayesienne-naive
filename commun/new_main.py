@@ -207,7 +207,7 @@ except :
     print("Entrer X pour quitter")
     answer = input()
 
-while answer != '1' and answer != '2':  # Error when answering
+while answer != '1' and answer != '2' and answer != 'X' and answer != 'x':  # Error when answering
     answer = input("Votre réponse ne peut pas être prise en compte. Veuillez s'il vous plait entrer une réponse présente parmi les propositions : ")
 
 print()
