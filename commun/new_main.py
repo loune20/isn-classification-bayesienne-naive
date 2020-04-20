@@ -236,6 +236,17 @@ if answer == '1':  # Calculate the dataset
         program_end = True
 
 else:  # Analyze a new comment written by the user
+    word_frequency={}
+    word_positivity_score={}
+    word_negativity_score={}
+
+    reader = csv.DictReader(open('output.csv'), delimiter=';')  # Opening file
+
+    for row in reader:  # Filling up the dictionaries from the csv file with the words as keys
+        word_frequency[row['word']] = row['frequency']  # Word frequency as value (from the column 'frequency')
+        word_positivity_score[row['word']] = row['positivity_score']  # Word positivity score as value (from the column 'positivity_score')
+        word_negativity_score[row['word']] = row['negativity_score']  # Word negativity score as value (from the column 'negativity_score')
+
     analyze_new_comment = writeNewComment()
 
 
