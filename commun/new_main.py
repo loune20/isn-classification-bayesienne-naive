@@ -214,7 +214,15 @@ print()
 if answer == '1':  # Calculate the dataset
     
     # Extracting data from dataset
-    reader = csv.DictReader(open('data_videogames.csv'), delimiter=';')  # Opening file
+    try:  # Try if data_videogames.csv exists
+        reader = csv.DictReader(open('data_videogames.csv'), delimiter=';')  # Opening file
+    except:  # Error from data set
+        print("Je n'arrive pas à trouver la base de données...")
+        print("Êtes-vous sûrs que vous n'avez pas supprimé le fichier ou que son nom est bien 'data_videogames.csv' ?")
+        print("Je suis désolé mais sans cette base de données accessible, je ne peux pas faire d'analyse.")
+        print("Je vais devoir arrêter le programme, j'espère que vous allez trouver une solution !")
+        quit()  # End of program
+    
     data_original = []  # Creating empty list
     for row in reader:  # For each row in our csv file
         data_original.append([row['reviewText'], row['overall']])  # Filling up the list with a tuple of the summary and the rating extracted from the csv file
