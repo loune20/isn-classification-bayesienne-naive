@@ -226,7 +226,7 @@ if answer == '1':  # Calculate the dataset
         elif data_original[i][1] == "5":
             data_original[i][1] = True
         else:  # Managing data error
-            print("Erreur : un des commentaires de la base de données a une note qui n'est ni 1 ni 5")
+            print("Il y a une erreur dans la base de données : un des commentaires a une note qui n'est ni 1 ni 5.")
 
     # Text data pre-processing
     data_treated = preProcessing(data_original)
