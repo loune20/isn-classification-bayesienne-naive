@@ -192,7 +192,7 @@ if answer == 'oui':  # Explain how the program works
     sleep(5)  # Wait 5 seconds
     print()
 
-try :  # Try if calculations_results.csv exists
+try:  # Try if calculations_results.csv exists
     open('calculations_results.csv')
     print("Un fichier contenant les données calculées existe déjà.")
     print("Que voulez-vous faire ?")
@@ -200,7 +200,7 @@ try :  # Try if calculations_results.csv exists
     print("Entrer 2 pour analyser un commentaire en se basant sur les données déjà calculées")
     print("Entrer X pour quitter")
     answer = input()
-except :
+except:
     print("Il n'existe pas de fichier contenant de données déjà calculées.")
     print("Je vous propose de calculer la base de données, mais cela va durer plusieurs minutes...")
     print("Entrer 1 pour confirmer")
