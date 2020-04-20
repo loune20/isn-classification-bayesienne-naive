@@ -171,7 +171,6 @@ def writeNewComment():
 
 # MAIN
 
-
 # User Interaction
 program_end = False
 
