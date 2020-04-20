@@ -171,36 +171,6 @@ def writeNewComment():
 
 # MAIN
 
-# Extracting data from dataset
-reader = csv.DictReader(open('data_videogames.csv'), delimiter=';')  # Opening file
-data_original = []  # Creating empty list
-for row in reader:  # For each row in our csv file
-    data_original.append([row['reviewText'], row['overall']])  # Filling up the list with a tuple of the summary and the rating extracted from the csv file
-
-# Changing 1 and 5 to False and True
-for i in range(len(data_original)):
-    if data_original[i][1] == "1":
-        data_original[i][1] = False
-    elif data_original[i][1] == "5":
-        data_original[i][1] = True
-    else:  # Managing data error
-        print("Erreur : un des commentaires de la base de données a une note qui n'est ni 1 ni 5")
-
-# Text data pre-processing
-data_treated = preProcessing(data_original)
-
-# Creating a list of all the significant words processed
-significant_words = []
-for comment in data_treated:  # Filling up the list with all the words (after pre-processing, in all comments)
-    significant_words = significant_words + comment[0].split()
-for word in significant_words:  # For each word (except stop-words)
-    if significant_words.count(word) > 1:  # Delete duplicate words
-        significant_words.remove(word)
-
-# Words analysis
-word_frequency = frequencyOfWords(data_treated)  # Calculate the frequency of each word in all comments of data_treated
-word_positivity_score = calculatePosScore(data_treated, True)  # Calculate the frequency of each word in all positive comments of data_treated
-word_negativity_score = calculatePosScore(data_treated, False)  # Calculate the frequency of each word in all negative comments of data_treated
 
 # User Interaction
 program_end = False
@@ -215,7 +185,38 @@ while answer != '1' and answer != '2':  # Error when answering
 
 print()
 if answer == '1':  # Calculate the dataset
-    print("On n'a pas encore créé la fonction donc ce n'est pas possible...")
+    
+    # Extracting data from dataset
+    reader = csv.DictReader(open('data_videogames(400 lignes).csv'), delimiter=';')  # Opening file
+    data_original = []  # Creating empty list
+    for row in reader:  # For each row in our csv file
+        data_original.append([row['reviewText'], row['overall']])  # Filling up the list with a tuple of the summary and the rating extracted from the csv file
+
+    # Changing 1 and 5 to False and True
+    for i in range(len(data_original)):
+        if data_original[i][1] == "1":
+            data_original[i][1] = False
+        elif data_original[i][1] == "5":
+            data_original[i][1] = True
+        else:  # Managing data error
+            print("Erreur : un des commentaires de la base de données a une note qui n'est ni 1 ni 5")
+
+    # Text data pre-processing
+    data_treated = preProcessing(data_original)
+
+    # Creating a list of all the significant words processed
+    significant_words = []
+    for comment in data_treated:  # Filling up the list with all the words (after pre-processing, in all comments)
+        significant_words = significant_words + comment[0].split()
+    for word in significant_words:  # For each word (except stop-words)
+        if significant_words.count(word) > 1:  # Delete duplicate words
+            significant_words.remove(word)
+
+    # Words analysis
+    word_frequency = frequencyOfWords(data_treated)  # Calculate the frequency of each word in all comments of data_treated
+    word_positivity_score = calculatePosScore(data_treated, True)  # Calculate the frequency of each word in all positive comments of data_treated
+    word_negativity_score = calculatePosScore(data_treated, False)  # Calculate the frequency of each word in all negative comments of data_treated
+    
     print("Entrer 1 pour analyser un commentaire")
     print("Entrer X pour quitter")
     answer = input()
@@ -248,3 +249,4 @@ while program_end is False:  # To analyze other comments
         analyze_new_comment = writeNewComment()
     else:  # End of program
         program_end = True
+
