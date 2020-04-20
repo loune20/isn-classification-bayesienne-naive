@@ -214,12 +214,12 @@ if answer == '1':  # Calculate the dataset
     word_positivity_score = calculatePosScore(data_treated, True)  # Calculate the frequency of each word in all positive comments of data_treated
     word_negativity_score = calculatePosScore(data_treated, False)  # Calculate the frequency of each word in all negative comments of data_treated
     
-    #Entre un commentaire ici !!
-    with open('output.csv', 'w', newline='') as csvfile:
-    writer = csv.writer(csvfile, delimiter=';')
-    writer.writerow(["word", "frequency", "positivity_score", "negativity_score"])
-    for word in significant_words:
-        writer.writerow([word, word_frequency[word], word_positivity_score[word], word_negativity_score[word]])
+    # Write calculations results in a CSV file
+    with open('calculations_results.csv', 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile, delimiter=';')
+        writer.writerow(["word", "frequency", "positivity_score", "negativity_score"])
+        for word in significant_words:
+            writer.writerow([word, word_frequency[word], word_positivity_score[word], word_negativity_score[word]])
     
     print("Entrer 1 pour analyser un commentaire")
     print("Entrer X pour quitter")
@@ -240,7 +240,7 @@ else:  # Analyze a new comment written by the user
     word_negativity_score={}
     significant_words = []
 
-    reader = csv.DictReader(open('output.csv'), delimiter=';')  # Opening file
+    reader = csv.DictReader(open('calculations_results.csv'), delimiter=';')  # Opening file
 
     for row in reader:  # Filling up the dictionaries from the csv file with the words as keys
         word_frequency[row['word']] = row['frequency']  # Word frequency as value (from the column 'frequency')
