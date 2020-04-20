@@ -175,10 +175,20 @@ def writeNewComment():
 # User Interaction
 program_end = False
 
-print("Que voulez-vous faire ?")
-print("Entrer 1 pour calculer la base de données (attention cela va durer plusieurs minutes !)")
-print("Entrer 2 pour analyser un commentaire en se basant sur les données déjà calculées")
-answer = input()
+try :  # Try if calculations_results.csv exists
+    open('calculations_results.csv')
+    print("Un fichier contenant les données calculées existe déjà.")
+    print("Que voulez-vous faire ?")
+    print("Entrer 1 pour re-calculer la base de données (attention cela va durer plusieurs minutes !)")
+    print("Entrer 2 pour analyser un commentaire en se basant sur les données déjà calculées")
+    print("Entrer X pour quitter")
+    answer = input()
+except :
+    print("Il n'existe pas de fichier contenant de données déjà calculées.")
+    print("Je vous propose de calculer la base de données, mais cela va durer plusieurs minutes...")
+    print("Entrer 1 pour confirmer")
+    print("Entrer X pour quitter")
+    answer = input()
 
 while answer != '1' and answer != '2':  # Error when answering
     answer = input("Votre réponse ne peut pas être prise en compte. Veuillez s'il vous plait entrer une réponse présente parmi les propositions : ")
@@ -234,7 +244,7 @@ if answer == '1':  # Calculate the dataset
     else:  # End of program
         program_end = True
 
-else:  # Analyze a new comment written by the user
+elif answer == '2':  # Analyze a new comment written by the user
     word_frequency={}
     word_positivity_score={}
     word_negativity_score={}
@@ -250,6 +260,8 @@ else:  # Analyze a new comment written by the user
 
     analyze_new_comment = writeNewComment()
 
+else:  # End of program
+    program_end = True
 
 while program_end is False:  # To analyze other comments
     print()
