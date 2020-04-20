@@ -221,14 +221,13 @@ if answer == '1':  # Calculate the dataset
     for word in significant_words:
         writer.writerow([word, word_frequency[word], word_positivity_score[word], word_negativity_score[word]])
     
-    
     print("Entrer 1 pour analyser un commentaire")
     print("Entrer X pour quitter")
     answer = input()
 
     while answer != '1' and answer != 'X' and answer != 'x':  # Error when answering
         answer = input("Votre réponse ne peut pas être prise en compte. Veuillez s'il vous plait entrer une réponse présente parmi les propositions : ")
-    
+
     print()
     if answer == '1':  # Analyze a new comment written by the user
         analyze_new_comment = writeNewComment()
@@ -239,6 +238,7 @@ else:  # Analyze a new comment written by the user
     word_frequency={}
     word_positivity_score={}
     word_negativity_score={}
+    significant_words = []
 
     reader = csv.DictReader(open('output.csv'), delimiter=';')  # Opening file
 
@@ -246,6 +246,7 @@ else:  # Analyze a new comment written by the user
         word_frequency[row['word']] = row['frequency']  # Word frequency as value (from the column 'frequency')
         word_positivity_score[row['word']] = row['positivity_score']  # Word positivity score as value (from the column 'positivity_score')
         word_negativity_score[row['word']] = row['negativity_score']  # Word negativity score as value (from the column 'negativity_score')
+        significant_words.append(row['word'])  # List of all the significant words processed (from the column 'word')
 
     analyze_new_comment = writeNewComment()
 
