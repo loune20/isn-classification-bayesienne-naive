@@ -190,8 +190,8 @@ if answer == 'oui':  # Explain how the program works
     print("J'espère que mes explications étaient claires et que vous comprenez désormais mieux comment je fonctionne.")
     print("Bonne utilisation !")
     sleep(5)  # Wait 5 seconds
-    
-print()
+    print()
+
 try :  # Try if calculations_results.csv exists
     open('calculations_results.csv')
     print("Un fichier contenant les données calculées existe déjà.")
