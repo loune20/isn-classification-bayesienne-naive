@@ -243,7 +243,7 @@ else:  # Analyze a new comment written by the user
     reader = csv.DictReader(open('calculations_results.csv'), delimiter=';')  # Opening file
 
     for row in reader:  # Filling up the dictionaries from the csv file with the words as keys
-        word_frequency[row['word']] = float((row['frequency'])  # Word frequency as value (from the column 'frequency')
+        word_frequency[row['word']] = float(row['frequency'])  # Word frequency as value (from the column 'frequency')
         word_positivity_score[row['word']] = float(row['positivity_score'])  # Word positivity score as value (from the column 'positivity_score')
         word_negativity_score[row['word']] = float(row['negativity_score'])  # Word negativity score as value (from the column 'negativity_score')
         significant_words.append(row['word'])  # List of all the significant words processed (from the column 'word')
