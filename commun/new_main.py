@@ -174,6 +174,24 @@ def writeNewComment():
 # User Interaction
 program_end = False
 
+print("Bonjour ! Je suis un programme de machine learning qui fait de l'analyse de sentiments.")
+print("Voulez-vous que je vous explique mon fonctionnement ? (oui ou non)")
+answer = input().lower()
+
+while answer != 'oui' and answer != 'non':  # Error when answering
+    answer = input("Votre réponse ne peut pas être prise en compte. Veuillez s'il vous plait entrer une réponse présente parmi les propositions : ")
+
+print()
+if answer == 'oui':  # Explain how the program works
+    print("Mon but est de trouver si un commentaire laissé sur un site d'achat en ligne est un avis positif, avec une note de 5/5, ou négatif, avec une note de 1/5.")
+    print("Plus précisément, j'utilise une classification naïve bayésienne pour étudier si le commentaire est plutôt positif ou négatif selon les mots qu'il contient.")
+    print("Pour cela, j'utilise une base de données de commentaires dont on connait leur note associée, ce qui permet de savoir si les mots sont davantage présents dans des commentaires positifs ou des commentaires négatifs.")
+    print("Mais cette base de données correspond à des achats de jeux vidéos, donc les commentaires que j'analyse doivent correspondre à cette catégorie.")
+    print("J'espère que mes explications étaient claires et que vous comprenez désormais mieux comment je fonctionne.")
+    print("Bonne utilisation !")
+    sleep(5)  # Wait 5 seconds
+    
+print()
 try :  # Try if calculations_results.csv exists
     open('calculations_results.csv')
     print("Un fichier contenant les données calculées existe déjà.")
@@ -277,4 +295,3 @@ while program_end is False:  # To analyze other comments
         analyze_new_comment = writeNewComment()
     else:  # End of program
         program_end = True
-
