@@ -211,11 +211,22 @@ if answer == '1':  # Calculate the dataset
     for word in significant_words:  # For each word (except stop-words)
         if significant_words.count(word) > 1:  # Delete duplicate words
             significant_words.remove(word)
-
+            
+    #La on enlève vraiment les doublons
+    
+    significant_words = list(dict.fromkeys(significant_words))
     # Words analysis
     word_frequency = frequencyOfWords(data_treated)  # Calculate the frequency of each word in all comments of data_treated
     word_positivity_score = calculatePosScore(data_treated, True)  # Calculate the frequency of each word in all positive comments of data_treated
     word_negativity_score = calculatePosScore(data_treated, False)  # Calculate the frequency of each word in all negative comments of data_treated
+    
+    #Entre un commentaire ici !!
+    with open('output.csv', 'w', newline='') as csvfile:
+    writer = csv.writer(csvfile, delimiter=';')
+    writer.writerow(["word", "frequency", "positivity_score", "negativity_score"])
+    for word in significant_words:
+        writer.writerow([word, word_frequency[word], word_positivity_score[word], word_negativity_score[word]])
+    
     
     print("Entrer 1 pour analyser un commentaire")
     print("Entrer X pour quitter")
