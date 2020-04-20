@@ -208,13 +208,7 @@ if answer == '1':  # Calculate the dataset
     significant_words = []
     for comment in data_treated:  # Filling up the list with all the words (after pre-processing, in all comments)
         significant_words = significant_words + comment[0].split()
-    for word in significant_words:  # For each word (except stop-words)
-        if significant_words.count(word) > 1:  # Delete duplicate words
-            significant_words.remove(word)
-            
-    #La on enlève vraiment les doublons
-    
-    significant_words = list(dict.fromkeys(significant_words))
+    significant_words = list(dict.fromkeys(significant_words)) # Delete duplicate words
     # Words analysis
     word_frequency = frequencyOfWords(data_treated)  # Calculate the frequency of each word in all comments of data_treated
     word_positivity_score = calculatePosScore(data_treated, True)  # Calculate the frequency of each word in all positive comments of data_treated
