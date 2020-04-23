@@ -150,99 +150,154 @@ def writeNewComment():
         print("Je pense que ce commentaire a une note de 5/5 (positif) !")
     elif comment_analysis == 1:
         print("Je pense que ce commentaire a une note de 1/5 (négatif) !")
-    else:  # If the comment contained no significant words
+    else:  # If the comment contains no significant words
         return()
-
     print()
     sleep(1.5)  # Wait 1,5 seconds
+
     rating = input("Veuillez entrer la véritable note associée à votre avis (1 pour un avis négatif, 5 pour un avis positif) : ")
     while rating != '1' and rating != '5':  # Error when answering
         rating = input("Votre réponse ne peut pas être prise en compte. Veuillez s'il vous plait entrer une note de 1 ou de 5 : ")
-
     print()
+
     if int(rating) != comment_analysis:  # Analysis error
         print("Oh non mon analyse était fausse, j'espère mieux réussir la prochaine fois !")
     else:  # Correct analysis
         print("Super, j'ai eu juste !")
         print(quotes[randint(0, len(quotes)-1)])  # Print random quote from quotes list
     sleep(2)  # Wait 2 seconds
-
+    
     return()
 
 # MAIN
 
-# Extracting data from dataset
-reader = csv.DictReader(open('data_videogames.csv'), delimiter=';')  # Opening file
-data_original = []  # Creating empty list
-for row in reader:  # For each row in our csv file
-    data_original.append([row['reviewText'], row['overall']])  # Filling up the list with a tuple of the summary and the rating extracted from the csv file
-
-# Changing 1 and 5 to False and True
-for i in range(len(data_original)):
-    if data_original[i][1] == "1":
-        data_original[i][1] = False
-    elif data_original[i][1] == "5":
-        data_original[i][1] = True
-    else:  # Managing data error
-        print("Erreur : un des commentaires de la base de données a une note qui n'est ni 1 ni 5")
-
-# Text data pre-processing
-data_treated = preProcessing(data_original)
-
-# Creating a list of all the significant words processed
-significant_words = []
-for comment in data_treated:  # Filling up the list with all the words (after pre-processing, in all comments)
-    significant_words = significant_words + comment[0].split()
-for word in significant_words:  # For each word (except stop-words)
-    if significant_words.count(word) > 1:  # Delete duplicate words
-        significant_words.remove(word)
-
-# Words analysis
-word_frequency = frequencyOfWords(data_treated)  # Calculate the frequency of each word in all comments of data_treated
-word_positivity_score = calculatePosScore(data_treated, True)  # Calculate the frequency of each word in all positive comments of data_treated
-word_negativity_score = calculatePosScore(data_treated, False)  # Calculate the frequency of each word in all negative comments of data_treated
-
 # User Interaction
 program_end = False
 
-print("Que voulez-vous faire ?")
-print("Entrer 1 pour calculer la base de données (attention cela va durer plusieurs minutes !)")
-print("Entrer 2 pour analyser un commentaire en se basant sur les données déjà calculées")
-answer = input()
+print("Bonjour ! Je suis un programme de machine learning qui fait de l'analyse de sentiments.",
+      "\nVoulez-vous que je vous explique mon fonctionnement ? (oui ou non)")
+answer = input().lower()
 
-while answer != '1' and answer != '2':  # Error when answering
+while answer != 'oui' and answer != 'non':  # Error when answering
     answer = input("Votre réponse ne peut pas être prise en compte. Veuillez s'il vous plait entrer une réponse présente parmi les propositions : ")
-
 print()
+
+if answer == 'oui':  # Explain how the program works
+    print("Mon but est de trouver si un commentaire laissé sur un site d'achat en ligne est un avis positif, avec une note de 5/5, ou négatif, avec une note de 1/5.",
+          "\nPlus précisément, j'utilise une classification naïve bayésienne pour étudier si le commentaire est plutôt positif ou négatif selon les mots qu'il contient.",
+          "\nPour cela, j'utilise une base de données de commentaires dont on connait leur note associée, ce qui permet de savoir si les mots sont davantage présents dans des commentaires positifs ou des commentaires négatifs.",
+          "\nMais cette base de données correspond à des achats de jeux vidéos, donc les commentaires que j'analyse doivent correspondre à cette catégorie.",
+          "\nJ'espère que mes explications étaient claires et que vous comprenez désormais mieux comment je fonctionne.",
+          "\nBonne utilisation !",
+          "\n")
+    sleep(5)  # Wait 5 seconds
+
+try:  # Try if calculations_results.csv exists
+    open('calculations_results.csv')
+    print("Un fichier contenant les données calculées existe déjà.",
+          "\nQue voulez-vous faire ?",
+          "\nEntrer 1 pour re-calculer la base de données (attention cela va durer plusieurs minutes !)",
+          "\nEntrer 2 pour analyser un commentaire en se basant sur les données déjà calculées",
+          "\nEntrer X pour quitter")
+    answer = input()
+except:
+    print("Il n'existe pas de fichier contenant de données déjà calculées.",
+          "\nJe vous propose de calculer la base de données, mais cela va durer plusieurs minutes...",
+          "\nEntrer 1 pour confirmer",
+          "\nEntrer X pour quitter")
+    answer = input()
+
+while answer != '1' and answer != '2' and answer != 'X' and answer != 'x':  # Error when answering
+    answer = input("Votre réponse ne peut pas être prise en compte. Veuillez s'il vous plait entrer une réponse présente parmi les propositions : ")
+print()
+
 if answer == '1':  # Calculate the dataset
-    print("On n'a pas encore créé la fonction donc ce n'est pas possible...")
-    print("Entrer 1 pour analyser un commentaire")
-    print("Entrer X pour quitter")
+    
+    # Extracting data from dataset
+    try:  # Try if data_videogames.csv exists
+        reader = csv.DictReader(open('data_videogames(400 lignes).csv'), delimiter=';')  # Opening file
+    except:  # Error from data set
+        print("Je n'arrive pas à trouver la base de données...",
+              "\nÊtes-vous sûrs que vous n'avez pas supprimé le fichier ou que son nom est bien 'data_videogames.csv' ?",
+              "\nJe suis désolé mais sans cette base de données accessible, je ne peux pas faire d'analyse.",
+              "\nJe vais devoir arrêter le programme, j'espère que vous allez trouver une solution !")
+        quit()  # End of program
+    
+    data_original = []  # Creating empty list
+    for row in reader:  # For each row in our csv file
+        data_original.append([row['reviewText'], row['overall']])  # Filling up the list with a tuple of the summary and the rating extracted from the csv file
+
+    # Changing 1 and 5 to False and True
+    for i in range(len(data_original)):
+        if data_original[i][1] == "1":
+            data_original[i][1] = False
+        elif data_original[i][1] == "5":
+            data_original[i][1] = True
+        else:  # Managing data error
+            print("Il y a une erreur dans la base de données : un des commentaires a une note qui n'est ni 1 ni 5.")
+
+    # Text data pre-processing
+    data_treated = preProcessing(data_original)
+
+    # Creating a list of all the significant words processed
+    significant_words = []
+    for comment in data_treated:  # Filling up the list with all the words (after pre-processing, in all comments)
+        significant_words = significant_words + comment[0].split()
+    significant_words = list(dict.fromkeys(significant_words)) # Delete duplicate words
+    
+    # Words analysis
+    word_frequency = frequencyOfWords(data_treated)  # Calculate the frequency of each word in all comments of data_treated
+    word_positivity_score = calculatePosScore(data_treated, True)  # Calculate the frequency of each word in all positive comments of data_treated
+    word_negativity_score = calculatePosScore(data_treated, False)  # Calculate the frequency of each word in all negative comments of data_treated
+    
+    # Write calculations results in a CSV file
+    with open('calculations_results.csv', 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile, delimiter=';')
+        writer.writerow(["word", "frequency", "positivity_score", "negativity_score"])
+        for word in significant_words:
+            writer.writerow([word, word_frequency[word], word_positivity_score[word], word_negativity_score[word]])
+    
+    print("Entrer 1 pour analyser un commentaire",
+          "\nEntrer X pour quitter")
     answer = input()
 
     while answer != '1' and answer != 'X' and answer != 'x':  # Error when answering
         answer = input("Votre réponse ne peut pas être prise en compte. Veuillez s'il vous plait entrer une réponse présente parmi les propositions : ")
-    
+
     print()
     if answer == '1':  # Analyze a new comment written by the user
         analyze_new_comment = writeNewComment()
     else:  # End of program
         program_end = True
 
-else:  # Analyze a new comment written by the user
+elif answer == '2':  # Analyze a new comment written by the user
+    word_frequency={}
+    word_positivity_score={}
+    word_negativity_score={}
+    significant_words = []
+
+    reader = csv.DictReader(open('calculations_results.csv'), delimiter=';')  # Opening file
+
+    for row in reader:  # Filling up the dictionaries from the csv file with the words as keys
+        word_frequency[row['word']] = float(row['frequency'])  # Word frequency as value (from the column 'frequency')
+        word_positivity_score[row['word']] = float(row['positivity_score'])  # Word positivity score as value (from the column 'positivity_score')
+        word_negativity_score[row['word']] = float(row['negativity_score'])  # Word negativity score as value (from the column 'negativity_score')
+        significant_words.append(row['word'])  # List of all the significant words processed (from the column 'word')
+
     analyze_new_comment = writeNewComment()
 
+else:  # End of program
+    program_end = True
 
 while program_end is False:  # To analyze other comments
-    print()
-    print("Souhaitez-vous analyser un autre commentaire ou quitter ?")
-    print("Entrer 1 pour écrire un nouveau commentaire à analyser")
-    print("Entrer X pour quitter")
+    print("\nSouhaitez-vous analyser un autre commentaire ou quitter ?",
+          "\nEntrer 1 pour écrire un nouveau commentaire à analyser",
+          "\nEntrer X pour quitter")
     answer = input()
 
     while answer != '1' and answer != 'X' and answer != 'x':  # Error when answering
         answer = input("Votre réponse ne peut pas être prise en compte. Veuillez s'il vous plait entrer une réponse présente parmi les propositions : ")
-    
+
     print()
     if answer == '1':  # Analyze a new comment written by the user
         analyze_new_comment = writeNewComment()
