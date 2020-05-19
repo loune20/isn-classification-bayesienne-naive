@@ -119,8 +119,6 @@ def newCommentAnalysis(new_comment):
             comment_positivity = comment_positivity * (word_positivity_score[word]/word_frequency[word])
             comment_negativity = comment_negativity * (word_negativity_score[word]/word_frequency[word])
 
-    print("pos: ", comment_positivity, "neg: ", comment_negativity)  # A SUPPRIMER
-
     if has_significant_word is False:  # If none of the words could be analyzed
         print("Désolé, je ne peux pas analyser ce commentaire car il ne contient aucun mot significatif...")
         sleep(1.5)  # Wait 1,5 seconds
@@ -166,7 +164,7 @@ def writeNewComment():
         print("Super, j'ai eu juste !")
         print(quotes[randint(0, len(quotes)-1)])  # Print random quote from quotes list
     sleep(2)  # Wait 2 seconds
-    
+
     return()
 
 # MAIN
@@ -212,17 +210,17 @@ while answer != '1' and answer != '2' and answer != 'X' and answer != 'x':  # Er
 print()
 
 if answer == '1':  # Calculate the dataset
-    
+
     # Extracting data from dataset
     try:  # Try if data_videogames.csv exists
-        reader = csv.DictReader(open('data_videogames(400 lignes).csv'), delimiter=';')  # Opening file
+        reader = csv.DictReader(open('data_videogames.csv'), delimiter=';')  # Opening file
     except:  # Error from data set
         print("Je n'arrive pas à trouver la base de données...",
               "\nÊtes-vous sûrs que vous n'avez pas supprimé le fichier ou que son nom est bien 'data_videogames.csv' ?",
               "\nJe suis désolé mais sans cette base de données accessible, je ne peux pas faire d'analyse.",
               "\nJe vais devoir arrêter le programme, j'espère que vous allez trouver une solution !")
         quit()  # End of program
-    
+
     data_original = []  # Creating empty list
     for row in reader:  # For each row in our csv file
         data_original.append([row['reviewText'], row['overall']])  # Filling up the list with a tuple of the summary and the rating extracted from the csv file
@@ -243,20 +241,20 @@ if answer == '1':  # Calculate the dataset
     significant_words = []
     for comment in data_treated:  # Filling up the list with all the words (after pre-processing, in all comments)
         significant_words = significant_words + comment[0].split()
-    significant_words = list(dict.fromkeys(significant_words)) # Delete duplicate words
-    
+    significant_words = list(dict.fromkeys(significant_words))  # Delete duplicate words
+
     # Words analysis
     word_frequency = frequencyOfWords(data_treated)  # Calculate the frequency of each word in all comments of data_treated
     word_positivity_score = calculatePosScore(data_treated, True)  # Calculate the frequency of each word in all positive comments of data_treated
     word_negativity_score = calculatePosScore(data_treated, False)  # Calculate the frequency of each word in all negative comments of data_treated
-    
+
     # Write calculations results in a CSV file
     with open('calculations_results.csv', 'w', newline='') as csvfile:
         writer = csv.writer(csvfile, delimiter=';')
         writer.writerow(["word", "frequency", "positivity_score", "negativity_score"])
         for word in significant_words:
             writer.writerow([word, word_frequency[word], word_positivity_score[word], word_negativity_score[word]])
-    
+
     print("Entrer 1 pour analyser un commentaire",
           "\nEntrer X pour quitter")
     answer = input()
@@ -271,9 +269,9 @@ if answer == '1':  # Calculate the dataset
         program_end = True
 
 elif answer == '2':  # Analyze a new comment written by the user
-    word_frequency={}
-    word_positivity_score={}
-    word_negativity_score={}
+    word_frequency = {}
+    word_positivity_score = {}
+    word_negativity_score = {}
     significant_words = []
 
     reader = csv.DictReader(open('calculations_results.csv'), delimiter=';')  # Opening file
