@@ -28,7 +28,7 @@ Nous avons réparti le projet en 3 étapes principales :
 
 Cette partie est en réalité divisée en trois sous-parties que nous avons pu répartir entre nous : 
 
-Louise :
+Louis :
 - Télécharger et ouvrir un fichier json contenant un dataset de commentaires Amazon en anglais (commentaires et avis associés à une note allant de 1 à 5 étoiles) que l'on peut trouver sur internet et le convertir en un fichier csv.
 - Supprimer les données inutiles, c'est-à-dire la date, le nom de la personne, le titre, mais également les commentaires ayant 2, 3 ou 4 étoiles. Ainsi, on ne garde que le commentaire et la note correspondante, qui est de 1 ou de 5 pour simplifier l'analyse (le commentaire est donc soit positif, soit négatif). Commencer avec 1000 lignes (500 commentaires positifs et 500 commentaires négatifs), extraire les données et les transformer en liste.
 
@@ -39,7 +39,7 @@ Jeanne :
 - Rechercher les mots les plus fréquents dans les commentaires (après le traitement du texte) pour ne garder que ceux qui sont présents dans plus de 30% des commentaires (valeur du pourcentage à ajuster), et calculer leur fréquence d'apparition dans la totalité des commentaires.
 
 ### *Format des entrées/sorties* :  
-Louise : 
+Louis : 
  - entrée : fichier CSV pré-traité à la main
  - sortie : liste de type  `data_original = [("comm1", True), ("comm2", False), ("comm3", False)]` où True signifie un commentaire positif (5 étoiles) et False un commentaire négatif (1 étoile)
 
@@ -67,7 +67,7 @@ Format :
 - sortie : liste de type : `freq_words_in_pos = [("word1", freq_word1_in_pos), ("word2", freq_word2_in_pos)]` où `freq_word_in_pos` est un float compris entre 0 et 1  
 
 
-### *Probabilité que le commentaire soit positif et qu'il contienne le mot (Louise)*  
+### *Probabilité que le commentaire soit positif et qu'il contienne le mot (Louis)*  
 
 Cela nous permettra de calculer, dans un deuxième temps, la probabilité que le commentaire soit positif (`ComPos`) et que ce soit un commentaire qui contienne le mot (`word1`) :  
 
@@ -91,11 +91,11 @@ Format :
 
 
 ## 3ème partie : Bayes *(3 mai)*  
-Louise, Mathis et Jeanne :  
+Louis, Mathis et Jeanne :  
 
 Cette 3ème partie a pour but d'analyser un nouveau commentaire (toujours de 1 ou 5 étoiles) pour savoir s'il est positif ou non.
 
-- Pour un commentaire donné, faire une liste avec uniquement les mots qui se trouvent dans ce commentaire et qui ont été précédement analysés (Louise ou commun)
+- Pour un commentaire donné, faire une liste avec uniquement les mots qui se trouvent dans ce commentaire et qui ont été précédement analysés (Louis ou commun)
 - Récupérer dans la liste `pos_score` le score de positivité de ces mots
 - Utiliser la classification naïve Bayésienne (issue du théorême de Bayes), pour nous permettre de connaître la probabilité que ce commentaire soit positif, selon le score de positivité des différents mots utilisés. Cela nous donne:
 
@@ -107,11 +107,11 @@ Cette 3ème partie a pour but d'analyser un nouveau commentaire (toujours de 1 o
 ## Améliorations possibles :  
 Si on termine avant la date limite que l'on s'est imposé (le 3 mai), plusieurs améliorations sont possibles et faciles à répartir entre nous :
 - Calculer la fréquence d'erreurs (par Jeanne)
-- Créer une interface graphique qui afficherait le commentaire, la note devinée par l'algorithme, puis la note réelle, ou éventuellement qui permettrait de rentrer notre propre commentaire (en anglais) et de voir s'il estime que c'est un commentaire positif ou négatif (par Jeanne/Louise)
-- Faire un jeu entre l'utilisateur et l'algorithme pour déterminer la note : le commentaire s'affiche et il faut deviner s'il est positif (5 étoiles) ou négatif (1 étoile) (par Louise/Jeanne)
+- Créer une interface graphique qui afficherait le commentaire, la note devinée par l'algorithme, puis la note réelle, ou éventuellement qui permettrait de rentrer notre propre commentaire (en anglais) et de voir s'il estime que c'est un commentaire positif ou négatif (par Jeanne/Louis)
+- Faire un jeu entre l'utilisateur et l'algorithme pour déterminer la note : le commentaire s'affiche et il faut deviner s'il est positif (5 étoiles) ou négatif (1 étoile) (par Louis/Jeanne)
 - Améliorer le pre-processing du texte, pour par exemple reconnaître les abréviations qui sont fréquentes et qui pour l'instant ne sont pas reconnues. Cela permettrait de rendre l'analyse du texte plus précise (normalization, voire text enrichment) (par Mathis)
 
 ---
 
-Groupe 7 : DUPOUY Jeanne, FIRMINO Mathis, MERCIER Louise (TS2)  
+Groupe 7 : [Jeanne, Mathis, Louis] (TS2)  
 02/2020
