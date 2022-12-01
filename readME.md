@@ -2,20 +2,22 @@
 Projet d'isn écrit en **Python** pour s'initier au machine learning.  
 Cet exemple se base sur le site de [Lovely Analytics](https://lovelyanalytics.com/2018/10/04/classification-bayesienne-naive-comment-ca-marche/)  
 Pour en apprendre plus sur le théorême de Bayes (en anglais) : [ici](https://actuairesbigdata.wordpress.com/2016/01/13/une-explication-simple-de-classification-naive-bayesienne/) et [ici](https://arbital.com/p/bayes_rule/?l=1zq).  
-On se propose d'utiliser comme outil Git(lab), [Jupyter](https://www.dataquest.io/m/349-project-learn-and-install-jupyter-notebook/), Discord, HackMD : [Sprint1](https://hackmd.io/@loune/sprint1), [Sprint2](https://hackmd.io/@JeanneD/sprint2)
+On se propose d'utiliser comme outil Git, [Jupyter](https://www.dataquest.io/m/349-project-learn-and-install-jupyter-notebook/), Discord, HackMD : [Sprint1](https://hackmd.io/@loune/sprint1), [Sprint2](https://hackmd.io/@JeanneD/sprint2)
 
 ---
 
-[Amazon dataset](http://jmcauley.ucsd.edu/data/amazon/),
-[App store dataset](https://medium.com/the-research-nest/data-science-tutorial-analysis-of-the-google-play-store-dataset-c720330d4903),
-[Video Games Amazon dataset](http://snap.stanford.edu/data/amazon/productGraph/categoryFiles/reviews_Video_Games_5.json.gz)
+[Amazon dataset](http://jmcauley.ucsd.edu/data/amazon/),  
+[App store dataset](https://medium.com/the-research-nest/data-science-tutorial-analysis-of-the-google-play-store-dataset-c720330d4903),  
+[Video Games Amazon dataset](http://snap.stanford.edu/data/amazon/productGraph/categoryFiles/reviews_Video_Games_5.json.gz)  
+
 ---
 
 # To-do
 - [X] Sprint 2 (correction du sprint 1 avec ce qu'on a réellement fait au final) LIEN [ICI](https://hackmd.io/@JeanneD/sprint2)
 - [X] Se répartir plus en détail les tâches à faire pour la 3ème partie
 
-# Bayes (3 mai)
+# Bayes
+(3 mai)
 
 - [ ] Pour un com, faire une liste contentant tous les mots précédemment analysés (récupérer celle de Jeanne) (words_list mais à actualiser) (Jeanne)
 - [ ] Récuperer dans `pos_score` le score de chacun des mots (Jeanne)
@@ -23,7 +25,8 @@ On se propose d'utiliser comme outil Git(lab), [Jupyter](https://www.dataquest.i
 - [ ] Print le résultat de l'analyse : interface graphique (Louis si pygame, Mathis si Tkinter)
 
 
-# **DONE** Tri divers (fini le 4 février)
+# Tri divers
+(fini le 4 février)
 
 ## Louis
 - [X] Télécharger et ouvrir un fichier json contenant un dataset de commentaires Amazon en anglais (commentaires et avis associés à une note allant de 1 à 5 étoiles) que l’on peut trouver sur internet et le convertir en un fichier csv.
@@ -61,7 +64,8 @@ On se propose d'utiliser comme outil Git(lab), [Jupyter](https://www.dataquest.i
 - format : fonction `frequency_of_words()`
 
 
-# **DONE** Score de positivité (fini le 11 février)
+# Score de positivité
+(fini le 11 février)
 
 ## Mathis : fréquence d'appparition du mot dans les commentaires positifs
 - [X] Calculer fréquence apparition des mots de la liste `freq_word` dans les com positifs
