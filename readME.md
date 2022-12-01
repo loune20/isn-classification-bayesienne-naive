@@ -20,12 +20,12 @@ On se propose d'utiliser comme outil Git(lab), [Jupyter](https://www.dataquest.i
 - [ ] Pour un com, faire une liste contentant tous les mots précédemment analysés (récupérer celle de Jeanne) (words_list mais à actualiser) (Jeanne)
 - [ ] Récuperer dans `pos_score` le score de chacun des mots (Jeanne)
 - [ ] Appliquer Bayes avec la formule : `P(comPos |word1, word2, word3...) = (pos_score[word1]*pos_score[word2]*pos_score[3])/(freq_word[word1]*freq_word[word2]*freq_word[word3])` (Mathis si pas GUI, sinon Louise)
-- [ ] Print le résultat de l'analyse : interface graphique (Louise si pygame, Mathis si Tkinter)
+- [ ] Print le résultat de l'analyse : interface graphique (Louis si pygame, Mathis si Tkinter)
 
 
 # **DONE** Tri divers (fini le 4 février)
 
-## Louise
+## Louis
 - [X] Télécharger et ouvrir un fichier json contenant un dataset de commentaires Amazon en anglais (commentaires et avis associés à une note allant de 1 à 5 étoiles) que l’on peut trouver sur internet et le convertir en un fichier csv.
 - [X] Supprimer les données inutiles, c’est-à-dire la date, le nom de la personne, le titre, mais également les commentaires ayant 2, 3 ou 4 étoiles. Ainsi, on ne garde que le commentaire et la note correspondante, qui est de 1 ou de 5 pour simplifier l’analyse (le commentaire est donc soit positif, soit négatif).
 - [ ] Commencer avec 1000 lignes (500 commentaires positifs et 500 commentaires négatifs)
