@@ -15,7 +15,7 @@ Nous avons réparti le projet en 3 étapes principales :
 ## 1ère partie : tri divers (*28 janvier*)
 Cette partie est en fait divisée en trois sous-partie indépendantes que nous avons pu répartir entre nous : 
 
-Louise :
+Louis :
 - Télécharger et ouvrir un fichier json contenant un dataset de commentaires Amazon en anglais (commentaires et avis associés à une note allant de 1 à 5 étoiles) que l'on peut trouver sur internet.
 - Supprimer les données inutiles, c'est-à-dire la date, le nom de la personne ayant écrit le commentaire, le titre du commentaire, mais également les commentaires ayant 2, 3 ou 4 étoiles. Ainsi, on ne garde que le commentaire et la note correspondante, qui est de 1 ou de 5 pour simplifier l'analyse (le commentaire est donc soit positif, soit négatif).
 - Commencer avec 1000 lignes (500 commentaires positifs et 500 commentaires négatifs), convertir le fichier json en csv, extraire et transformer en liste (contenant des tuple ou bien des listes, avec le commentaire et la note : True si note de 5 et False si note de 1).
@@ -28,7 +28,7 @@ Jeanne :
 
 
 Les entrées et sorties de chaques fonctions/programmes sont établies comme suit : 
- - Louise : fichier CSV pré-traité à la main en entrée, liste de type  `data_original = [("comm1", True), ("comm2", False), ("comm3", False)]` où True signifie un commentaire positif (5 étoiles) et False un commentaire négatif (1 étoile)
+ - Louis : fichier CSV pré-traité à la main en entrée, liste de type  `data_original = [("comm1", True), ("comm2", False), ("comm3", False)]` où True signifie un commentaire positif (5 étoiles) et False un commentaire négatif (1 étoile)
  - Mathis : liste du même type que `data_original` (voire plus haut), sortie identique
  - Jeanne : liste du même type que `data_original`, sortie une autre liste de type : `freq_words = [(word1, freq_word1), (word2, freq_word2), (word3, freq_word3)]` où freq_word est un float compris entre 0 et 1 **a verifier par Jeanne**
 
@@ -41,7 +41,7 @@ Sachant que P(ComPos & InCom) = nombre de fois où le mot est présent dans les 
 
 ## 3ème partie: Bayes (*3 mai*)
 Commun :
-- Pour un commentaire donné, faire une liste avec uniquement les mots qui se trouvent dans ce commentaire et qui ont été précédement analysés (Louise ou commun)
+- Pour un commentaire donné, faire une liste avec uniquement les mots qui se trouvent dans ce commentaire et qui ont été précédement analysés (Louis ou commun)
 - Appliquer le théorême de Bayes, pour nous permettre de connaître la probabilité que ce commentaire soit positif ou négatif, selon le score de positivité des différents mots utilisés. **a detailler**
 
 
