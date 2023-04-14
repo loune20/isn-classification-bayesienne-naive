@@ -21,7 +21,7 @@ On se propose d'utiliser comme outil Git, [Jupyter](https://www.dataquest.io/m/3
 
 - [ ] Pour un com, faire une liste contentant tous les mots précédemment analysés (récupérer celle de Jeanne) (words_list mais à actualiser) (Jeanne)
 - [ ] Récuperer dans `pos_score` le score de chacun des mots (Jeanne)
-- [ ] Appliquer Bayes avec la formule : `P(comPos |word1, word2, word3...) = (pos_score[word1]*pos_score[word2]*pos_score[3])/(freq_word[word1]*freq_word[word2]*freq_word[word3])` (Mathis si pas GUI, sinon Louise)
+- [ ] Appliquer Bayes avec la formule : `P(comPos |word1, word2, word3...) = (pos_score[word1]*pos_score[word2]*pos_score[3])/(freq_word[word1]*freq_word[word2]*freq_word[word3])` (Mathis si pas GUI, sinon Louis)
 - [ ] Print le résultat de l'analyse : interface graphique (Louis si pygame, Mathis si Tkinter)
 
 
